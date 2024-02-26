@@ -1,95 +1,52 @@
-import Image from "next/image";
+import Head from "next/head";
+import Link from "next/link";
 import styles from "./page.module.css";
 
 export default function Home() {
   return (
-    <main className={styles.main}>
-      <div className={styles.description}>
-        <p>
-          Get started by editing&nbsp;
-          <code className={styles.code}>src/app/page.js</code>
-        </p>
-        <div>
-          <a
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{" "}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className={styles.vercelLogo}
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
-        </div>
-      </div>
 
-      <div className={styles.center}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-      </div>
+    <div className={`${styles.container} ${styles.diagonal}`}>
+      <Head>
+        <title>MedimeHub - Tu plataforma integral de gestión de salud</title>
+        <meta name="description" content="Gestiona tus expedientes médicos y recetas de manera integral con MedimeHub." />
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
 
-      <div className={styles.grid}>
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Docs <span>-&gt;</span>
-          </h2>
-          <p>Find in-depth information about Next.js features and API.</p>
-        </a>
-
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Learn <span>-&gt;</span>
-          </h2>
-          <p>Learn about Next.js in an interactive course with&nbsp;quizzes!</p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Templates <span>-&gt;</span>
-          </h2>
-          <p>Explore starter templates for Next.js.</p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Deploy <span>-&gt;</span>
-          </h2>
-          <p>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
+      <main className={styles.main}>
+        <div className={styles.header}>
+          <h1 className={styles.title}>
+            Bienvenido a <span className={styles.highlight}>MedimeHub</span>
+          </h1>
+          <p className={styles.subtitle}>
+            Tu plataforma integral de gestión de salud
           </p>
-        </a>
-      </div>
-    </main>
+          <p className={styles.description}>
+            Con MedimeHub, puedes gestionar tus expedientes médicos y recetas de manera fácil y segura. ¡Únete a nosotros y descubre una nueva forma de cuidar tu salud!
+          </p>
+        </div>
+
+        <div className={styles.grid}>
+          <Link href="/login">
+            <div className={styles.card}>
+              <h3>Iniciar sesión →</h3>
+              <p>Accede a tu cuenta de MedimeHub</p>
+            </div>
+          </Link>
+
+          <Link href="/register">
+            <div className={styles.card}>
+              <h3>Registrarse →</h3>
+              <p>Únete a MedimeHub hoy mismo</p>
+            </div>
+          </Link>
+        </div>
+      </main>
+
+      <footer className={styles.footer}>
+        <p>MedimeHub - Todos los derechos reservados</p>
+        <p>Hecho con ❤️ para nuestros usuarios</p>
+      </footer>
+
+    </div>
   );
 }
