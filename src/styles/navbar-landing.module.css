@@ -1,0 +1,16 @@
+/* navbar-landing.module.css */
+
+.navbar {
+    display: flex;
+    width: 1803px;
+    height: 84px;
+    justify-content: center;
+    align-items: center;
+    gap: 210px;
+    flex-shrink: 0;
+}
+
+.logo {
+    width: 90px;
+    height: 90px;
+}
