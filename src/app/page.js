@@ -3,8 +3,6 @@ import styles from "../styles/landing.module.css";
 import logo from "../assets/logo-landing.svg";
 import LoginPage from "../components/login.jsx";
 
-
-
 export default function Home() {
   return (
     <div className={styles.container}>
@@ -28,11 +26,11 @@ export default function Home() {
         <div className={styles.loginContainer}>
           {/* Aquí deberías poner un enlace o un botón que dirija a la página de login */}
           <LoginPage />
-          <div className={styles.registerButton}>Register</div>
+          {/* <div className={styles.registerButton}>Register</div> */}
         </div>
       </div>
       <div className={styles.tagline}>
-        Porque tu salud importa: Medimehub pone el control en tus manos, donde
+        Porque tu salud importa; Medimehub pone el control en tus manos, donde
         quiera que estés.
       </div>
       <div className={styles.heading}>

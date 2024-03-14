@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+    viewBox="0,0,256,256" width="20px" height="20px">
+    <g fill="none" fill-rule="nonzero" stroke="#5a16eb" stroke-width="3" stroke-linecap="round"
+        stroke-linejoin="round" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0"
+        font-family="none" font-weight="none" font-size="none" text-anchor="none"
+        style="mix-blend-mode: normal">
+        <g transform="scale(5.33333,5.33333)">
+            <path d="M7.5,29v-17.5c0,-2.2 1.8,-4 4,-4h18c2.2,0 4,1.8 4,4"></path>
+            <path d="M33.5,36.5c0,2.2 -1.8,4 -4,4h-18c-2.2,0 -4,-1.8 -4,-4v-1.9"></path>
+            <path d="M15.5,24h23"></path>
+            <path d="M33.5,31l7,-7l-7,-7"></path>
+        </g>
+    </g>
+</svg>

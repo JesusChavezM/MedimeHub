@@ -1,44 +1,55 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { signIn, useSession, signOut } from "next-auth/react";
+import Styles from "../styles/navbar-landing.module.css";
+import { ST } from "next/dist/shared/lib/utils";
+import singout from "../assets/singout.svg";
+
 
 function Navbar() {
   const { data: session } = useSession();
 
   return (
-    <nav className="bg-slate-900 flex items-center py-3 justify-between px-24 text-white">
+    <nav className={Styles.navbar}>
       <Link href="/">
       </Link>
 
       {session?.user ? (
-        <div className="flex gap-x-2 items-center">
-          <Link href="/dashboard">Dashboard</Link>
-          <p>
-            {session.user.name} {session.user.email}
-          </p>
+        <div className={Styles.userContainer}>
+          <Link href="/dashboard"></Link>
           <img
             src={session.user.image}
             alt=""
-            className="w-10 h-10 rounded-full cursor-pointer"
+            className= {Styles.avatar}	
           />
-          <button
+          <p className={Styles.userName}>
+            {session.user.name}
+          </p>
+          <button className={Styles.btnSingOut}
             onClick={async () => {
               await signOut({
                 callbackUrl: "/",
               })
             }}
           >
-            Logout
+            <Image
+              src={singout}
+              alt="Sing out"
+              width={30}
+              height={30}
+            />
           </button>
         </div>
       ) : (
         <button
           onClick={() => signIn()}
-          className="bg-sky-400 px-3 py-2 rounded"
+          className={Styles.btnSingIn}	
         >
           Sign In
         </button>
+        
       )}
     </nav>
   );
