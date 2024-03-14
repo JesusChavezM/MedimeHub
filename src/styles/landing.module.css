@@ -1,6 +1,20 @@
 .container {
     display: flex;
-    justify-content: space-between;
+    width: 1803px;
+    height: 84px;
+    justify-content: center;
+    align-items: center;
+    gap: 210px;
+    flex-shrink: 0;
+
+}
+
+.logoContainer {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
 }
 
 .logo {
@@ -15,11 +29,20 @@
 }
 
 .logoText {
-    color: #773DFF;
-    font-size: 48px;
+    color: var(--600, #773DFF);
     font-family: Inter;
+    font-size: 48px;
+    font-style: normal;
     font-weight: 700;
-    word-wrap: break-word;
+    line-height: normal;
+}
+
+.menu {
+    display: flex;
+    width: 493px;
+    justify-content: center;
+    align-items: center;
+    gap: 53px;
 }
 
 .menuItem {
@@ -31,6 +54,15 @@
     font-family: Inter;
     font-weight: 900;
     word-wrap: break-word;
+}
+
+.loginContainer {
+    display: flex;
+    width: 307px;
+    height: 53px;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
 }
 
 .loginButton {
