@@ -1,0 +1,96 @@
+.container {
+    display: flex;
+    justify-content: space-between;
+}
+
+.logo {
+    gap: 12px;
+    display: flex;
+}
+
+.logoImage {
+    width: 90px;
+    height: 90px;
+    position: relative;
+}
+
+.logoText {
+    color: #773DFF;
+    font-size: 48px;
+    font-family: Inter;
+    font-weight: 700;
+    word-wrap: break-word;
+}
+
+.menuItem {
+    height: 48px;
+    width: 98px;
+    text-align: center;
+    color: #773DFF;
+    font-size: 24px;
+    font-family: Inter;
+    font-weight: 900;
+    word-wrap: break-word;
+}
+
+.loginButton {
+    width: 130px;
+    height: 43px;
+    border-radius: 5px;
+    text-align: center;
+    color: #3F11A1;
+    font-size: 24px;
+    font-family: Inter;
+    font-weight: 700;
+    word-wrap: break-word;
+}
+
+.registerButton {
+    width: 144px;
+    height: 43px;
+    background: #773DFF;
+    border-radius: 10px;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    display: flex;
+    color: #F3F2FF;
+    font-size: 24px;
+    font-family: Inter;
+    font-weight: 700;
+    word-wrap: break-word;
+}
+
+.tagline {
+    left: 512px;
+    top: 518px;
+    position: absolute;
+    color: #5a16eb;
+    font-size: 20px;
+    font-family: Inter;
+    font-weight: 600;
+    word-wrap: break-word;
+}
+
+.heading {
+    width: 927px;
+    height: 104px;
+    left: 496px;
+    top: 393px;
+    position: absolute;
+}
+
+.heading span {
+    font-size: 96px;
+    font-family: Inter;
+    font-weight: 600;
+    word-wrap: break-word;
+}
+
+.heading .care-about {
+    color: #24076e;
+}
+
+.heading .you {
+    color: #773dff;
+}

@@ -1,52 +1,44 @@
-import Head from "next/head";
-import Link from "next/link";
-import styles from "./page.module.css";
+import Image from "next/image";
+import styles from "../styles/landing.module.css";
+import logo from "../assets/logo-landing.svg";
+import LoginPage from "../components/login.jsx";
+
+
 
 export default function Home() {
   return (
-
-    <div className={`${styles.container} ${styles.diagonal}`}>
-      <Head>
-        <title>MedimeHub - Tu plataforma integral de gestión de salud</title>
-        <meta name="description" content="Gestiona tus expedientes médicos y recetas de manera integral con MedimeHub." />
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
-
-      <main className={styles.main}>
-        <div className={styles.header}>
-          <h1 className={styles.title}>
-            Bienvenido a <span className={styles.highlight}>MedimeHub</span>
-          </h1>
-          <p className={styles.subtitle}>
-            Tu plataforma integral de gestión de salud
-          </p>
-          <p className={styles.description}>
-            Con MedimeHub, puedes gestionar tus expedientes médicos y recetas de manera fácil y segura. ¡Únete a nosotros y descubre una nueva forma de cuidar tu salud!
-          </p>
+    <div className={styles.container}>
+      <div className={styles.logoContainer}>
+        <div className={styles.logo}>
+          <div className={styles.logoImage}></div>
+          <Image
+            className={styles.bgImage}
+            src={logo}
+            width={70}
+            height={70}
+            alt="Logo"
+          />
+          <div className={styles.logoText}>MedimeHub</div>
         </div>
-
-        <div className={styles.grid}>
-          <Link href="/login">
-            <div className={styles.card}>
-              <h3>Iniciar sesión →</h3>
-              <p>Accede a tu cuenta de MedimeHub</p>
-            </div>
-          </Link>
-
-          <Link href="/register">
-            <div className={styles.card}>
-              <h3>Registrarse →</h3>
-              <p>Únete a MedimeHub hoy mismo</p>
-            </div>
-          </Link>
+        <div className={styles.menu}>
+          <div className={styles.menuItem}>Home</div>
+          <div className={styles.menuItem}>About</div>
+          <div className={styles.menuItem}>FAQ</div>
         </div>
-      </main>
-
-      <footer className={styles.footer}>
-        <p>MedimeHub - Todos los derechos reservados</p>
-        <p>Hecho con ❤️ para nuestros usuarios</p>
-      </footer>
-
+        <div className={styles.loginContainer}>
+          {/* Aquí deberías poner un enlace o un botón que dirija a la página de login */}
+          <LoginPage />
+          <div className={styles.registerButton}>Register</div>
+        </div>
+      </div>
+      <div className={styles.tagline}>
+        Porque tu salud importa: Medimehub pone el control en tus manos, donde
+        quiera que estés.
+      </div>
+      <div className={styles.heading}>
+        <span className={styles.careAbout}>We Care About</span>
+        <span className={styles.you}> You</span>
+      </div>
     </div>
   );
 }
