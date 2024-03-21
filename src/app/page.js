@@ -2,7 +2,6 @@ import Image from "next/image";
 import styles from "../styles/landing.module.css";
 import logo from "../assets/logo-landing.svg";
 import LoginPage from "../components/login.jsx";
-import Users from "../components/users";
 
 export default function Home() {
   return (
