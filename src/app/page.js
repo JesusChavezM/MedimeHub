@@ -40,9 +40,6 @@ export default function Home() {
           <span className={styles.you}> You</span>
         </div>
       </div>
-
-      <Users />
-
     </div>
   );
 }
