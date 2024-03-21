@@ -19,17 +19,20 @@ export default function UsersPage() {
 
     return (
         <div>
-            <h1>Lista de Usuarios</h1>
-            <ul>
+            <h1 className="text-2xl font-bold mb-4">Lista de Usuarios</h1>
+            <div className="grid grid-cols-3 gap-4">
                 {users.map(user => (
-                    <li key={user._id}>
-                        <p>Name: {user.name}</p>
-                        <p>Email: {user.email}</p>
-                        <p>Image: {user.image}</p>
-                        <p>Email Verified: {user.emailVerified}</p>
-                    </li>
+                    <div key={user._id} className="bg-purple-200 border border-purple-800 rounded-lg shadow-md p-4">
+                        <div className="flex items-center mb-2">
+                            <img src={user.image} alt={user.name} className="w-10 h-10 rounded-full mr-2" />
+                            <div>
+                                <p className="font-bold">{user.name}</p>
+                                <p className="text-gray-500">{user.email}</p>
+                            </div>
+                        </div>
+                    </div>
                 ))}
-            </ul>
+            </div>
         </div>
     );
 }
