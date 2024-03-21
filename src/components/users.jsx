@@ -1,16 +1,17 @@
 "use client";
 
-
 import { useEffect, useState } from 'react';
+
 
 export default function UsersPage() {
     const [users, setUsers] = useState([]);
 
     useEffect(() => {
         const getUsers = async () => {
-            const response = await fetch('/api/users.js');
+            const response = await fetch('./api/users');
             const data = await response.json();
             setUsers(data);
+            console.log(data)
         };
 
         getUsers();

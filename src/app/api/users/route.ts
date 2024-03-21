@@ -1,9 +1,10 @@
 import { MongoClient } from 'mongodb';
-import { NextResponse } from 'next/server';
+import { NextRequest, NextResponse } from 'next/server';
 
-export default async function GET() {
+export async function GET(request: NextRequest) {
   const uri = process.env.MONGODB_URI;
-  const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
+  
+  const client = new MongoClient(uri);
 
   try {
     await client.connect();
@@ -12,7 +13,7 @@ export default async function GET() {
 
     const users = await collection.find({}).toArray();
 
-      return NextResponse.json(users);
+    return NextResponse.json(users);
   } catch (err) {
     console.error("Error:", err);
     return NextResponse.json({ error: 'Error conectando a la base de datos'});

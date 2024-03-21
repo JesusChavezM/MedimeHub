@@ -30,7 +30,6 @@
 
 .logoText {
     color: var(--600, #773DFF);
-    font-family: Inter;
     font-size: 48px;
     font-style: normal;
     font-weight: 700;
@@ -51,7 +50,6 @@
     text-align: center;
     color: #773DFF;
     font-size: 24px;
-    font-family: Inter;
     font-weight: 900;
     word-wrap: break-word;
 }
@@ -72,7 +70,6 @@
     text-align: center;
     color: #3F11A1;
     font-size: 24px;
-    font-family: Inter;
     font-weight: 700;
     word-wrap: break-word;
 }
@@ -88,7 +85,6 @@
     display: flex;
     color: #F3F2FF;
     font-size: 24px;
-    font-family: Inter;
     font-weight: 700;
     word-wrap: break-word;
 }
@@ -99,7 +95,6 @@
     position: absolute;
     color: #5a16eb;
     font-size: 20px;
-    font-family: Inter;
     font-weight: 600;
     word-wrap: break-word;
 }
@@ -114,7 +109,6 @@
 
 .heading span {
     font-size: 96px;
-    font-family: Inter;
     font-weight: 600;
     word-wrap: break-word;
 }
