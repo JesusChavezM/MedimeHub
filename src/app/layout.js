@@ -1,4 +1,5 @@
 import { Inter } from "next/font/google";
+import Logo from "../assets/logo-landing.svg"
 import "./globals.css"
 
 const inter = Inter({ subsets: ["latin"] });
@@ -11,6 +12,9 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
+      <head>
+        <link rel="icon" href={Logo} width="64" height="64" />
+      </head>
       <body className={inter.className}>{children}</body>
     </html>
   );
