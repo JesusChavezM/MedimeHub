@@ -19,8 +19,9 @@ export default function Navbar() {
                 </div>
                 <div className="flex">
                     <LoginPage />
-                    <div className="h-12 sm:h-14 lg:h-16 w-32 sm:w-36 lg:w-40 bg-purple-600 rounded-lg flex justify-center items-center text-white font-bold text-lg">Register</div>
-
+                    <div className="bg-violet-600 rounded-lg justify-center items-center gap-2.5 inline-flex">
+                        <div className="text-violet-50 text-2xl font-bold mx-6">Register</div>
+                    </div>
                 </div>
             </div>
         </div>
