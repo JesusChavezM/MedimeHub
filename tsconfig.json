@@ -27,7 +27,7 @@
     ".next/types/**/*.ts",
     "**/*.ts",
     "**/*.tsx"
-, "src/components/Navbar-landing.jsx", "src/app/api/auth/[...nextauth]/route.js"  ],
+, "src/components/Navbar-sesion.jsx", "src/app/api/auth/[...nextauth]/route.js"  ],
   "exclude": [
     "node_modules"
   ]

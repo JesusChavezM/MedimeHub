@@ -13,9 +13,7 @@ function Navbar() {
 
   return (
     <nav className={Styles.navbar}>
-      <Link href="/">
-      </Link>
-
+      <Link href="/"/>
       {session?.user ? (
         <div className={Styles.userContainer}>
           <Link href="/dashboard"></Link>
@@ -40,7 +38,7 @@ function Navbar() {
               width={30}
               height={30}
             />
-          </button>
+          </button>     
         </div>
       ) : (
         <button
