@@ -23,6 +23,9 @@ module.exports = {
           900: "#3F11A1",
           950: "#24076E",       
       },
+      minHeight: {
+        "90vh": "90vh",
+      },
     },
   },
   plugins: [],
