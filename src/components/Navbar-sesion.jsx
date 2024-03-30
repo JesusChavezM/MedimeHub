@@ -3,7 +3,6 @@
 import Link from "next/link";
 import Image from "next/image";
 import { signIn, useSession, signOut } from "next-auth/react";
-import Styles from "../styles/navbar-landing.module.css";
 import { ST } from "next/dist/shared/lib/utils";
 import singout from "../assets/singout.svg";
 
@@ -12,20 +11,19 @@ function Navbar() {
   const { data: session } = useSession();
 
   return (
-    <nav className={Styles.navbar}>
+    <nav className="w-80 h-14 flex px-6">
       <Link href="/"/>
       {session?.user ? (
-        <div className={Styles.userContainer}>
+        <div className="rounded-xl bg-300 border border-900 justify-center items-center gap-2.5 inline-flex">
           <Link href="/dashboard"></Link>
           <img
             src={session.user.image}
-            alt=""
-            className= {Styles.avatar}	
+            className="flex w-10 h-10 rounded-full bg-purple-100"
           />
-          <p className={Styles.userName}>
+          <p className="text-purple-900 text-xl font-extrabold text-center w-full">
             {session.user.name}
           </p>
-          <button className={Styles.btnSingOut}
+          <button className="w-16 items-center justify-center cursor-pointer"
             onClick={async () => {
               await signOut({
                 callbackUrl: "/",
@@ -43,9 +41,9 @@ function Navbar() {
       ) : (
         <button
           onClick={() => signIn()}
-          className={Styles.btnSingIn}	
+          className="justify-center items-center mb-12 text-purple-900 text-lg font-bold cursor-pointer"	
         >
-          Sign In
+          Login
         </button>
         
       )}
