@@ -5,7 +5,7 @@ import LoginPage from "../components/Providers-login.jsx";
 export default function Navbar() {
     return (
         <div className="sticky top-1 z-50 bg-50 rounded-xl shadow-xl">
-            <div className="flex flex-col sm:flex-row justify-between items-center px-4 sm:px-8">
+            <div className="flex flex-col sm:flex-row justify-between items-center px-4 sm:px-8 my-2 md:my-0">
                 <div className="flex items-center">
                     <div className="h-8 w-8 sm:h-16 sm:w-16" style={{ display: "flex", alignItems: "center", justifyContent: "center" }}>
                         <Image src={logo} width={70} height={70} alt="Logo" />
