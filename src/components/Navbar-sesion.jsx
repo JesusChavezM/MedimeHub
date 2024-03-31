@@ -11,7 +11,7 @@ function Navbar() {
   const { data: session } = useSession();
 
   return (
-    <nav className="w-80 h-14 flex px-6 justify-between">
+    <nav className="w-80 h-14 flex px-6 sm:justify-between justify-center">
       <Link href="/"/>
       {session?.user ? (
         <div className="rounded-xl bg-300 border border-900 justify-center items-center gap-2.5 inline-flex">
@@ -41,9 +41,9 @@ function Navbar() {
       ) : (
         <button
           onClick={() => signIn()}
-          className="text-purple-900 text-2xl font-bold cursor-pointer"	
+          className="text-purple-900 text-2xl font-bold cursor-pointer hover:text-600"	
         >
-          Login
+          Iniciar sesión
         </button>
         
       )}
