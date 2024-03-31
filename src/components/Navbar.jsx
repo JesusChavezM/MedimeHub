@@ -17,11 +17,13 @@ export default function Navbar() {
                     <div className="text-center text-violet-900 text-xl sm:text-2xl font-bold my-2 sm:my-0 sm:mx-10">About</div>
                     <div className="text-center text-violet-900 text-xl sm:text-2xl font-bold my-2 sm:my-0 sm:mx-10">FAQ</div>
                 </div>
-                <div className="flex flex-col sm:flex-row">
-                    <LoginPage />
-                    <div className="bg-violet-600 rounded-lg justify-center items-center gap-2.5 inline-flex my-2 sm:my-0">
-                        <div className="text-violet-50 text-2xl sm:text-2xl font-bold mx-6">Register</div>
+                <div className="flex sm:flex-row flex-col-reverse sm:items-center">
+                    <div className="sm:ml-5">
+                        <LoginPage />
                     </div>
+                    {/* <div className="bg-violet-600 rounded-lg justify-center items-center gap-2.5 inline-flex my-2 sm:my-0">
+                        <div className="text-violet-50 text-xl sm:text-2xl font-bold mx-6">Register</div>
+                    </div> */}
                 </div>
             </div>
         </div>

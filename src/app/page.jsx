@@ -10,7 +10,7 @@ export default function Home() {
   return (
     <div className="flex flex-col items-center justify-center min-h-screen my-4">
       <Navbar />
-      <div className="flex flex-col justify-center items-center flex-grow min-h-40vh md:min-h-90vh">
+      <div className="flex flex-col justify-center items-center flex-grow min-h-30vh md:min-h-90vh">
         <div className="text-center">
           <span className="text-violet-950 text-4xl sm:text-6xl lg:text-8xl font-semibold">We Care About</span>
           <span className="text-violet-600 text-4xl sm:text-6xl lg:text-8xl font-semibold"> You</span>
