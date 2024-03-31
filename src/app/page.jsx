@@ -17,28 +17,28 @@ export default function Home() {
         </div>
         <div className="text-violet-700 text-sm sm:text-lg font-semibold text-center mb-2 px-4 sm:px-8">Porque tu salud importa: Medimehub pone el control en tus manos, donde quiera que estés.</div>
       </div>
-      <div className="py-4 flex flex-col md:flex-row items-center justify-center min-h-screen mx-auto">
-        <div className="text-950 text-2xl sm:text-3xl md:text-4xl font-bold font text-center mb-4">Nuestros servicios</div>
-        <div className="grid grid-cols-2 gap-4 items-center">
-          <div className="flex flex-row items-center space-x-4 justify-center">
-            <Image src={hospital} width={32} height={32} alt="hospital" />
-            <span className="text-950 text-sm sm:text-xl font-semibold">Consultar hospitales</span>
+      <div className="py-4 md:py-8 flex flex-col md:flex-row items-center justify-center min-h-screen mx-auto">
+        <div className="flex flex-col space-y-8 items-start md:items-start text-left w-3/4 md:w-auto">
+        <div className="w-full md:w-auto text-950 text-2xl sm:text-3xl md:text-4xl font-bold font text-center mb-4 md:mb-8 md:text-left md:self-start">Nuestros servicios</div>
+          <div className="flex flex-row items-center space-x-4">
+            <Image src={hospital} width={48} height={48} alt="hospital" />
+            <span className="text-950 text-lg sm:text-2xl md:text-3xl font-semibold">Consultar hospitales</span>
           </div>
-          <div className="flex flex-row items-center space-x-4 justify-center">
-            <Image src={cita} width={32} height={32} alt="citas"/>
-            <span className="text-950 text-sm sm:text-xl font-semibold">Hacer citas médicas</span>
+          <div className="flex flex-row items-center space-x-4">
+            <Image src={cita} width={48} height={48} alt="citas"/>
+            <span className="text-950 text-lg sm:text-2xl md:text-3xl font-semibold">Hacer citas médicas</span>
           </div>
-          <div className="flex flex-row items-center space-x-4 justify-center">
-            <Image src={receta} width={32} height={32} alt="recetas"/>
-            <span className="text-950 text-sm sm:text-xl font-semibold">Consultar recetas médicas</span>
+          <div className="flex flex-row items-center space-x-4">
+            <Image src={receta} width={48} height={48} alt="recetas"/>
+            <span className="text-950 text-lg sm:text-2xl md:text-3xl font-semibold">Consultar recetas médicas</span>
           </div>
-          <div className="flex flex-row items-center space-x-4 justify-center">
-            <Image src={doctor} width={32} height={32} alt="doctores"/>
-            <span className="text-950 text-sm sm:text-xl font-semibold">Consultar doctores</span>
+          <div className="flex flex-row items-center space-x-4">
+            <Image src={doctor} width={48} height={48} alt="doctores"/>
+            <span className="text-950 text-lg sm:text-2xl md:text-3xl font-semibold">Consultar doctores</span>
           </div>
-          <div className="flex flex-row items-center space-x-4 justify-center">
-            <Image src={expediente} width={32} height={32} alt="expediente"/>
-            <span className="text-950 text-sm sm:text-xl font-semibold">Consultar expediente médico</span>
+          <div className="flex flex-row items-center space-x-4">
+            <Image src={expediente} width={48} height={48} alt="expediente"/>
+            <span className="text-950 text-lg sm:text-2xl md:text-3xl font-semibold">Consultar expediente médico</span>
           </div>
         </div>
         <div className="mt-8 md:mt-0 md:ml-44">
