@@ -15,11 +15,11 @@ export default function Home() {
           <span className="text-violet-950 text-4xl sm:text-6xl lg:text-8xl font-semibold">We Care About</span>
           <span className="text-violet-600 text-4xl sm:text-6xl lg:text-8xl font-semibold"> You</span>
         </div>
-        <div className="text-violet-700 text-sm sm:text-lg font-semibold text-center mb-4 px-4 sm:px-8">Porque tu salud importa: Medimehub pone el control en tus manos, donde quiera que estés.</div>
+        <div className="text-violet-700 text-sm sm:text-lg font-semibold text-center mb-2 px-4 sm:px-8">Porque tu salud importa: Medimehub pone el control en tus manos, donde quiera que estés.</div>
       </div>
-      <div className="py-8 flex flex-col md:flex-row items-center justify-center min-h-screen mx-auto">
-        <div className="flex flex-col space-y-8 items-center">
-          <div className="text-950 text-xl sm:text-2xl md:text-4xl font-bold font">Nuestros servicios</div>
+      <div className="py-4 flex flex-col md:flex-row items-center justify-center min-h-screen mx-auto">
+        <div className="text-950 text-2xl sm:text-3xl md:text-4xl font-bold font text-center mb-4">Nuestros servicios</div>
+        <div className="grid grid-cols-2 gap-4 items-center">
           <div className="flex flex-row items-center space-x-4 justify-center">
             <Image src={hospital} width={32} height={32} alt="hospital" />
             <span className="text-950 text-sm sm:text-xl font-semibold">Consultar hospitales</span>
