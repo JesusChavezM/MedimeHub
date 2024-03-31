@@ -41,9 +41,9 @@ function Navbar() {
       ) : (
         <button
           onClick={() => signIn()}
-          className="text-purple-900 text-2xl font-bold cursor-pointer"	
+          className="text-purple-900 text-2xl font-bold cursor-pointer hover:text-600"	
         >
-          Login
+          Iniciar sesión
         </button>
         
       )}
