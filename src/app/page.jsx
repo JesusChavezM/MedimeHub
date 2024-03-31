@@ -19,7 +19,7 @@ export default function Home() {
       </div>
       <div className="py-4 md:py-8 flex flex-col md:flex-row items-center justify-center min-h-screen mx-auto">
         <div className="flex flex-col space-y-8 items-start md:items-start text-left w-3/4 md:w-auto">
-        <div className="w-full md:w-auto text-950 text-2xl sm:text-3xl md:text-4xl font-bold font text-center mb-4 md:mb-8 md:text-left md:self-start">Nuestros servicios</div>
+        <div className="w-full md:w-auto text-950 text-2xl sm:text-3xl md:text-4xl font-bold font text-center md:mb-8 md:text-left md:self-start">Nuestros servicios</div>
           <div className="flex flex-row items-center space-x-4">
             <Image src={hospital} width={48} height={48} alt="hospital" />
             <span className="text-950 text-lg sm:text-2xl md:text-3xl font-semibold">Consultar hospitales</span>
