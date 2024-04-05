@@ -6,7 +6,7 @@ export default function Navbar() {
     return (
         <div className="sticky top-1 z-50 bg-50 rounded-xl shadow-xl">
             <div className="flex flex-col sm:flex-row justify-between items-center px-4 sm:px-8 my-2 md:my-0">
-                <div className="flex items-center">
+                <div className="flex items-center gap-1">
                     <div className="h-8 w-8 sm:h-16 sm:w-16" style={{ display: "flex", alignItems: "center", justifyContent: "center" }}>
                         <Image src={logo} width={70} height={70} alt="Logo" />
                     </div>
@@ -21,9 +21,9 @@ export default function Navbar() {
                     <div className="sm:ml-5">
                         <LoginPage />
                     </div>
-                    {/* <div className="bg-violet-600 rounded-lg justify-center items-center gap-2.5 inline-flex my-2 sm:my-0">
-                        <div className="text-violet-50 text-xl sm:text-2xl font-bold mx-6">Register</div>
-                    </div> */}
+                    <div className="bg-600 rounded-lg justify-center items-center gap-2.5 inline-flex h-11 sm:my-0">
+                        <div className="text-50 text-xl sm:text-2xl font-bold mx-6">Register</div>
+                    </div>
                 </div>
             </div>
         </div>

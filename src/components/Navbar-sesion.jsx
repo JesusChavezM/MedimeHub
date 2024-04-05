@@ -12,10 +12,10 @@ function Navbar() {
 
   return (
     <nav className="w-80 h-14 flex px-6 sm:justify-between justify-center">
-      <Link href="/"/>
+      <Link href="/about"/>
       {session?.user ? (
         <div className="rounded-xl bg-300 border border-900 justify-center items-center gap-2.5 inline-flex">
-          <Link href="/dashboard"></Link>
+          <Link href="/about"></Link>
           <img
             src={session.user.image}
             className="flex w-10 h-10 rounded-full bg-purple-100"
@@ -36,16 +36,16 @@ function Navbar() {
               width={30}
               height={30}
             />
-          </button>     
+          </button>
         </div>
       ) : (
         <button
-          onClick={() => signIn()}
-          className="text-purple-900 text-2xl font-bold cursor-pointer hover:text-600"	
+          onClick={() => signIn( "google", { callbackUrl: "/about" })}
+          className="text-purple-900 text-2xl font-bold cursor-pointer hover:text-600"
         >
           Iniciar sesión
         </button>
-        
+
       )}
     </nav>
   );

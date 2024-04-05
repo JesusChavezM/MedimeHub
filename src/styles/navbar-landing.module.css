@@ -1,0 +1,91 @@
+.btnSingIn {
+    display: flex;
+    margin-bottom: 12px;
+    flex-direction: column;
+    justify-content: center;
+    flex-shrink: 0;
+    color: var(--900, #3F11A1);
+    text-align: center;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+.btnSignIn:hover {
+    color: var(--700, red);
+}
+.navbar {
+    width: 350px;
+    display: flex;
+    align-items: center;
+    padding-top: 0.75rem; /* Equivalente a 3 * 0.25rem */
+    justify-content: space-between;
+    padding-left: 1.5rem; /* Equivalente a 24px */
+    padding-right: 1.5rem; /* Equivalente a 24px */
+}
+
+.avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: #F3F2FF;
+    cursor: pointer;
+}
+
+.userContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    border-radius: 10px;
+    background: var(--300, #BAAEFF);
+    width: auto; /* Cambia el ancho a "auto" para que se ajuste al contenido */
+  }
+  
+
+.userName {
+    color: var(--900, #3F11A1);
+    font-family: Inter;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 900;
+    line-height: normal;
+    text-align: center;
+    height: 30px;
+}
+
+.RegisterButton {
+    width: 144px;
+    height: 43px;
+    background: #773DFF;
+    border-radius: 10px;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    display: flex;
+    color: #F3F2FF;
+    font-size: 24px;
+    font-family: Inter;
+    font-weight: 700;
+    word-wrap: break-word;
+}
+
+.btnSingOut {
+    width: 144px;
+    height: 43px;
+    background: transparent;
+    border: none;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    display: flex;
+    font-size: 24px;
+    font-family: Inter;
+    font-weight: 700;
+    word-wrap: break-word;
+    cursor: pointer;
+}

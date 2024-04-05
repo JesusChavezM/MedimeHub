@@ -5,7 +5,8 @@
 body {
     background-image: url('/static/media/pill-bg.png');
     background-repeat: repeat;
-    background-color: #f3f2ff;
+    /* background-color: #f3f2ff; */
+    background-color: red;
   }
 
   ::-webkit-scrollbar {
