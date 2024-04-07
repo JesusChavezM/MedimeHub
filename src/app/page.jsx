@@ -1,4 +1,3 @@
-import Navbar from "../components/Navbar";
 import Image from "next/image";
 import cita from "../assets/img_cita.svg";
 import doctor from "../assets/img_doctor.svg";
@@ -9,7 +8,6 @@ import receta from "../assets/img_receta.svg";
 export default function Home() {
   return (
     <div className="flex flex-col items-center justify-center min-h-screen my-4">
-      <Navbar />
       <div className="flex flex-col justify-center items-center flex-grow min-h-30vh md:min-h-90vh">
         <div className="text-center">
           <span className="text-violet-950 text-4xl sm:text-6xl lg:text-8xl font-semibold">We Care About</span>
