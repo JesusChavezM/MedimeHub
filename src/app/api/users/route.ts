@@ -3,9 +3,9 @@ import { NextRequest, NextResponse } from 'next/server';
 export const dynamic = "force-dynamic";
 
 export async function GET(request: NextRequest) {
-  const uri = process.env.MONGODB_URI;
+  const url = process.env.MONGO_URI;
   
-  const client = new MongoClient(uri);
+  const client = new MongoClient(url);
 
   try {
     await client.connect();

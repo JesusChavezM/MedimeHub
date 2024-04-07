@@ -5,16 +5,15 @@
 body {
     background-image: url('/static/media/pill-bg.png');
     background-repeat: repeat;
-    /* background-color: #f3f2ff; */
-    background-color: red;
+    background-color: #f3f2ff; 
   }
 
   ::-webkit-scrollbar {
-    width: 10px; /* Ancho de la barra de desplazamiento */
+    width: 5px; /* Ancho de la barra de desplazamiento */
   }
   
   /* Estilos para el controlador de la barra de desplazamiento */
   ::-webkit-scrollbar-thumb {
-    background-color: #888; /* Color del controlador */
+    background-color: #000000; /* Color del controlador */
     border-radius: 5px; /* Radio de borde del controlador */
-  }
+  } 
