@@ -51,50 +51,59 @@ const Login = () => {
   };
 
   if (sessionStatus === "loading") {
-    return <h1>Loading...</h1>;
+    return <div className="flex min-h-screen flex-col items-center justify-between p-24 text-900 font-bold"><h1>Loading...</h1></div>;
   }
 
   return (
     sessionStatus !== "authenticated" && (
       <div className="flex min-h-screen flex-col items-center justify-between p-24">
-        <div className="bg-[#212121] p-8 rounded shadow-md w-96">
-          <h1 className="text-4xl text-center font-semibold mb-8">Login</h1>
+        <div className="bg-100 p-8 rounded shadow-md w-96 border border-600">
+          <h1 className="text-600 text-4xl text-center font-bold mb-8">
+            Login
+          </h1>
           <form onSubmit={handleSubmit}>
             <input
               type="text"
-              className="w-full border border-gray-300 text-black rounded px-3 py-2 mb-4 focus:outline-none focus:border-blue-400 focus:text-black"
-              placeholder="Email"
+              className="w-full border border-600 text-black rounded px-3 py-2 mb-4 focus:outline-none focus:border-900 focus:text-black"
+              placeholder="Correo"
               required
             />
             <input
               type="password"
-              className="w-full border border-gray-300 text-black rounded px-3 py-2 mb-4 focus:outline-none focus:border-blue-400 focus:text-black"
-              placeholder="Password"
+              className="w-full border border-600 text-black rounded px-3 py-2 mb-4 focus:outline-none focus:border-900 focus:text-black"
+              placeholder="Contraseña"
               required
             />
             <button
               type="submit"
-              className="w-full bg-blue-500 text-white py-2 rounded hover:bg-blue-600"
+              className="w-full bg-600 text-50 py-2 rounded-2xl hover:bg-700 cursor-pointer"
             >
               {" "}
               Sign In
             </button>
             <p className="text-red-600 text-[16px] mb-4">{error && error}</p>
           </form>
+          <div className="text-center text-lg text-600 py-2">- OR -</div>
           <button
-            className="w-full bg-black text-white py-2 rounded hover:bg-gray-800"
+            className="w-full justify-center border border-600 bg-white text-black py-2 rounded-2xl hover:bg-200 flex items-center space-x-6"
             onClick={() => {
               signIn("google");
             }}
           >
-            Sign In with Google
+            <img
+              src="https://img.icons8.com/color/48/000000/google-logo.png"
+              alt="Google Icon"
+              className="w-10 h-10"
+            ></img>
+            <div>Continue with Google</div>
           </button>
-          <div className="text-center text-gray-500 mt-4">- OR -</div>
+
           <Link
-            className="block text-center text-blue-500 hover:underline mt-2"
+            className="block text-center hover:underline mt-2 cursor-pointer"
             href="/register"
           >
-            Register Here
+            <span className="text-600 text-lg">¿Eres nuevo?</span>
+            <span className="text-900 text-lg"> Crea una cuenta</span>
           </Link>
         </div>
       </div>
