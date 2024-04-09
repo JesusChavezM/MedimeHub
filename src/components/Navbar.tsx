@@ -3,10 +3,11 @@ import React from "react";
 import Link from "next/link";
 import Image from "next/image";
 import logo from "../assets/logo-landing.svg";
+import singout from "../assets/singout.svg";
 import { signOut, useSession } from "next-auth/react";
 
 const Navbar = () => {
-  const { data: session }:any  = useSession();
+  const { data: session }: any = useSession();
   return (
     <div className="sticky top-1 z-50 bg-50 rounded-xl shadow-xl">
       <div className="flex flex-col sm:flex-row justify-between items-center px-4 sm:px-8 my-2 md:my-0">
@@ -37,37 +38,48 @@ const Navbar = () => {
           </div>
         </div>
         <div className="flex sm:flex-row flex-col-reverse sm:items-center">
-          {/* <div className="sm:ml-5">
-            <LoginPage />
-          </div> */}
           {!session ? (
             <>
               <Link href="/login">
-                <span className="cursor-pointer">Login</span>
+                <span className="text-purple-900 mx-5 text-2xl font-bold cursor-pointer hover:text-600">
+                  Iniciar sesión
+                </span>
               </Link>
               <Link href="/register">
-                <span className="cursor-pointer">Register</span>
+                <div className="bg-600 rounded-lg justify-center items-center gap-2.5 inline-flex h-11 sm:my-0">
+                  <div className="text-50 text-xl sm:text-2xl font-bold mx-6">
+                    <span className="cursor-pointer">Registrarse</span>
+                  </div>
+                </div>
               </Link>
             </>
           ) : (
             <>
-              {session.user?.email}
-              <button
-                onClick={() => {
-                  signOut();
-                }}
-              >
-                Logout
-              </button>
+              <div className="w-auto h-14 flex px-4 sm:justify-between justify-center">
+                <div className="px-4 rounded-xl bg-300 border border-900 justify-center items-center gap-2.5 inline-flex">
+                  <img
+                    src={session.user.image}
+                    className="flex w-10 h-10 rounded-full bg-purple-100"
+                  />
+                  <p className="text-purple-900 text-xl font-extrabold text-center w-full">
+                    {session.user.name}
+                  </p>
+                  <button
+                    onClick={() => {
+                      signOut();
+                    }}
+                  >
+                    <Image
+                      src={singout}
+                      alt="Sing out"
+                      width={40}
+                      height={40}
+                    />
+                  </button>
+                </div>
+              </div>
             </>
           )}
-          {/* <div className="bg-600 rounded-lg justify-center items-center gap-2.5 inline-flex h-11 sm:my-0">
-            <div className="text-50 text-xl sm:text-2xl font-bold mx-6">
-              <Link href="/register">
-                <span className="cursor-pointer">Register</span>
-              </Link>
-            </div>
-          </div> */}
         </div>
       </div>
     </div>

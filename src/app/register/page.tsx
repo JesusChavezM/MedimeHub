@@ -24,6 +24,7 @@ const Register = () => {
     e.preventDefault();
     const email = e.target[0].value;
     const password = e.target[1].value;
+    const name = e.target[2].value;
 
     if (!isValidEmail(email)) {
       setError("Email is invalid");
@@ -32,6 +33,11 @@ const Register = () => {
 
     if (!password || password.length < 8) {
       setError("Password is invalid");
+      return;
+    }
+
+    if (!name) {
+      setError("Name is invalid");
       return;
     }
 
@@ -44,6 +50,7 @@ const Register = () => {
         body: JSON.stringify({
           email,
           password,
+          name,
         }),
       });
       if (res.status === 400) {
@@ -51,7 +58,7 @@ const Register = () => {
       }
       if (res.status === 200) {
         setError("");
-        router.push("/login");
+        router.push("/dashboard");
       }
     } catch (error) {
       setError("Error, try again");
@@ -69,6 +76,7 @@ const Register = () => {
         <div className="bg-[#212121] p-8 rounded shadow-md w-96">
           <h1 className="text-4xl text-center font-semibold mb-8">Register</h1>
           <form onSubmit={handleSubmit}>
+            
             <input
               type="text"
               className="w-full border border-gray-300 text-black rounded px-3 py-2 mb-4 focus:outline-none focus:border-blue-400 focus:text-black"
@@ -81,12 +89,18 @@ const Register = () => {
               placeholder="Password"
               required
             />
+            <input
+              type="text"
+              className="w-full border border-gray-300 text-black rounded px-3 py-2 mb-4 focus:outline-none focus:border-blue-400 focus:text-black"
+              placeholder="Name"
+              required
+            />
             <button
               type="submit"
               className="w-full bg-blue-500 text-white py-2 rounded hover:bg-blue-600"
             >
               {" "}
-              Register
+              Registrarse
             </button>
             <p className="text-red-600 text-[16px] mb-4">{error && error}</p>
           </form>
