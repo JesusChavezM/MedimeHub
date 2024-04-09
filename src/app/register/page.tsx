@@ -67,46 +67,45 @@ const Register = () => {
   };
 
   if (sessionStatus === "loading") {
-    return <h1>Loading...</h1>;
+    return <div className="flex min-h-screen flex-col items-center justify-between p-24 text-900 font-bold"><h1>Loading...</h1></div>;
   }
 
   return (
     sessionStatus !== "authenticated" && (
       <div className="flex min-h-screen flex-col items-center justify-between p-24">
-        <div className="bg-[#212121] p-8 rounded shadow-md w-96">
-          <h1 className="text-4xl text-center font-semibold mb-8">Register</h1>
-          <form onSubmit={handleSubmit}>
-            
+        <div className="bg-100 p-8 rounded shadow-md w-96 border border-600">
+          <h1 className="text-600 text-4xl text-center font-bold mb-8">Register</h1>
+          <form onSubmit={handleSubmit}>            
             <input
               type="text"
-              className="w-full border border-gray-300 text-black rounded px-3 py-2 mb-4 focus:outline-none focus:border-blue-400 focus:text-black"
-              placeholder="Email"
+              className="w-full border border-600 text-black rounded px-3 py-2 mb-4 focus:outline-none focus:border-900 focus:text-black"
+              placeholder="Correo"
               required
             />
             <input
               type="password"
-              className="w-full border border-gray-300 text-black rounded px-3 py-2 mb-4 focus:outline-none focus:border-blue-400 focus:text-black"
-              placeholder="Password"
+              className="w-full border border-600 text-black rounded px-3 py-2 mb-4 focus:outline-none focus:border-900 focus:text-black"
+              placeholder="Contraseña"
               required
             />
             <input
               type="text"
-              className="w-full border border-gray-300 text-black rounded px-3 py-2 mb-4 focus:outline-none focus:border-blue-400 focus:text-black"
-              placeholder="Name"
+              className="w-full border border-600 text-black rounded px-3 py-2 mb-4 focus:outline-none focus:border-900 focus:text-black"
+              placeholder="Nombre"
               required
             />
             <button
               type="submit"
-              className="w-full bg-blue-500 text-white py-2 rounded hover:bg-blue-600"
+              className="w-full bg-600 text-50 py-2 rounded-2xl hover:bg-700 cursor-pointer"
             >
               {" "}
               Registrarse
             </button>
             <p className="text-red-600 text-[16px] mb-4">{error && error}</p>
           </form>
-          <div className="text-center text-gray-500 mt-4">- OR -</div>
+          <div className="text-center text-lg text-600 py-2">- OR -</div>
           <Link
-            className="block text-center text-blue-500 hover:underline mt-2"
+            className="block text-center hover:underline mt-2 cursor-pointer text-600 text-lg"
             href="/login"
           >
             Login with an existing account
