@@ -7,6 +7,7 @@ import ImgUser from "../assets/img_user.svg";
 import singout from "../assets/singout.svg";
 import ImgMenu from "../assets/img_menu.svg";
 import { signOut, useSession } from "next-auth/react";
+import { redirect } from "next/dist/server/api-utils";
 
 const Navbar = () => {
   const { data: session }: any = useSession();
@@ -19,8 +20,8 @@ const Navbar = () => {
 
   return (
     <div className="flex flex-col items-center justify-center my-4">
-      <div className="sticky top-1 z-50 bg-50 rounded-xl shadow-xl border border-600/50">
-        <div className="flex flex-col sm:flex-row justify-between items-center px-4 sm:px-8 my-2 md:my-0">
+      <div className="fixed top-0.5 z-50 bg-50 rounded-xl shadow-xl border border-600/50">
+        <div className=" flex flex-col sm:flex-row justify-between items-center px-4 sm:px-8 my-2 md:my-0">
           <div className="flex items-center gap-1">
             <div
               className="h-10 w-10 sm:h-16 sm:w-16"
@@ -98,7 +99,7 @@ const Navbar = () => {
                     </p>
                     <button
                       onClick={() => {
-                        signOut();
+                        signOut({ callbackUrl: "/" ,redirect: true});
                       }}
                     >
                       <Image

@@ -51,7 +51,11 @@ const Login = () => {
   };
 
   if (sessionStatus === "loading") {
-    return <div className="flex min-h-screen flex-col items-center justify-between p-24 text-900 font-bold"><h1>Loading...</h1></div>;
+    return (
+      <div className="flex min-h-screen flex-col items-center justify-between p-24 text-900 font-bold">
+        <h1>Cargando ...</h1>
+      </div>
+    );
   }
 
   return (
@@ -59,7 +63,7 @@ const Login = () => {
       <div className="flex min-h-screen flex-col items-center justify-between p-24">
         <div className="bg-100 p-8 rounded shadow-md w-96 border border-600">
           <h1 className="text-600 text-4xl text-center font-bold mb-8">
-            Login
+            Iniciar Sesión
           </h1>
           <form onSubmit={handleSubmit}>
             <input
@@ -79,11 +83,20 @@ const Login = () => {
               className="w-full bg-600 text-50 py-2 rounded-2xl hover:bg-700 cursor-pointer"
             >
               {" "}
-              Sign In
+              Iniciar sesión
             </button>
             <p className="text-red-600 text-[16px] mb-4">{error && error}</p>
           </form>
-          <div className="text-center text-lg text-600 py-2">- OR -</div>
+          <div className="flex items-center justify-center">
+            <div className="w-full text-center text-lg text-600 py-2">
+              <div className="border border-600"></div>
+            </div>
+            <div className="mx-4 text-600 font-bold text-2xl">o</div>
+            <div className="w-full text-center text-lg text-600 py-2">
+              <div className="border border-600"></div>
+            </div>
+          </div>
+
           <button
             className="w-full justify-center border border-600 bg-white text-black py-2 rounded-2xl hover:bg-200 flex items-center space-x-6"
             onClick={() => {
@@ -95,7 +108,7 @@ const Login = () => {
               alt="Google Icon"
               className="w-10 h-10"
             ></img>
-            <div>Continue with Google</div>
+            <div>Continuar con Google</div>
           </button>
 
           <Link
