@@ -15,7 +15,10 @@ module.exports = {
           ],
         }
       );
-  
+      if (!isServer) {
+        // Configura el nombre del archivo de salida del chunk para que coincida con el nombre del archivo de origen
+        config.output.chunkFilename = '[name].js';
+      }
       return config;
     },
   };

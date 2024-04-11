@@ -103,9 +103,17 @@ const Register = () => {
             </button>
             <p className="text-red-600 text-[16px] mb-4">{error && error}</p>
           </form>
-          <div className="text-center text-lg text-600 py-2">- OR -</div>
+          <div className="flex items-center justify-center">
+            <div className="w-full text-center text-lg text-600 py-2">
+              <div className="border border-600"></div>
+            </div>
+            <div className="mx-4 text-600 font-bold text-2xl">o</div>
+            <div className="w-full text-center text-lg text-600 py-2">
+              <div className="border border-600"></div>
+            </div>
+          </div>
           <Link
-            className="block text-center hover:underline mt-2 cursor-pointer text-600 text-lg"
+            className="block text-center hover:underline mt-2 cursor-pointer text-900 text-lg"
             href="/login"
           >
             Login with an existing account
