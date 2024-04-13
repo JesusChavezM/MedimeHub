@@ -1,13 +1,21 @@
 "use client";
-import { useLoadScript, GoogleMap, MarkerF, CircleF } from "@react-google-maps/api";
+import {
+  useLoadScript,
+  GoogleMap,
+  MarkerF,
+  CircleF,
+} from "@react-google-maps/api";
 import type { NextPage } from "next";
 import { useMemo, useState } from "react";
-import usePlacesAutocomplete, { getGeocode, getLatLng } from "use-places-autocomplete";
+import usePlacesAutocomplete, {
+  getGeocode,
+  getLatLng,
+} from "use-places-autocomplete";
 
 const Home: NextPage = () => {
   const [lat, setLat] = useState(28.6366525930481);
   const [lng, setLng] = useState(-106.07661059120282);
-  
+
   const libraries = useMemo(() => ["places"], []);
   const mapCenter = useMemo(() => ({ lat: lat, lng: lng }), [lat, lng]);
 
@@ -47,19 +55,22 @@ const Home: NextPage = () => {
           }}
         />
       </div>
-      <GoogleMap
-        options={mapOptions}
-        zoom={16}
-        center={mapCenter}
-        mapTypeId={google.maps.MapTypeId.ROADMAP}
-        mapContainerStyle={{ width: "356px", height: "400px" }}
-        onLoad={(map) => console.log("Map Loaded")}
-      >
-        <MarkerF
-          position={mapCenter}
-          onLoad={() => console.log("Marker Loaded")}
-        />
-      </GoogleMap>
+
+      <div className="w-[356px] h-[400px] xl:w-[750px] xl:h-[550px]">
+        <GoogleMap
+          options={mapOptions}
+          zoom={16}
+          center={mapCenter}
+          mapTypeId={google.maps.MapTypeId.ROADMAP}
+          mapContainerStyle={{ width: "100%", height: "100%", borderRadius: 8, overflow: "hidden", border: "2px solid #3F11A1"}}
+          onLoad={(map) => console.log("Map Loaded")}
+        >
+          <MarkerF
+            position={mapCenter}
+            onLoad={() => console.log("Marker Loaded")}
+          />
+        </GoogleMap>
+      </div>
     </div>
   );
 };
@@ -79,9 +90,9 @@ const PlacesAutocomplete = ({
     requestOptions: {
       componentRestrictions: { country: "mx" },
       bounds: new window.google.maps.LatLngBounds(
-        new window.google.maps.LatLng(28.500, -106.150), // Suroeste de Chihuahua
-        new window.google.maps.LatLng(29.250, -105.500)  // Noreste de Chihuahua
-      )
+        new window.google.maps.LatLng(28.5, -106.15), // Suroeste de Chihuahua
+        new window.google.maps.LatLng(29.25, -105.5) // Noreste de Chihuahua
+      ),
     },
     debounce: 300,
     cache: 86400,
@@ -103,7 +114,7 @@ const PlacesAutocomplete = ({
             clearSuggestions();
             onAddressSelect && onAddressSelect(description);
           }}
-          className="p-2 bg-100 border-1 border-500 "
+          className="p-2 bg-100 border-1 border-500 overflow-x-hidden cursor-pointer"
         >
           <strong>{main_text}</strong> <small>{secondary_text}</small>
         </li>
@@ -130,11 +141,8 @@ const PlacesAutocomplete = ({
 
 export default Home;
 
-
-
-
-
-{/* {[1000, 2500].map((radius, idx) => {
+{
+  /* {[1000, 2500].map((radius, idx) => {
           return (
             <CircleF
               key={idx}
@@ -148,4 +156,5 @@ export default Home;
               }}
             />
           );
-        })} */}
+        })} */
+}

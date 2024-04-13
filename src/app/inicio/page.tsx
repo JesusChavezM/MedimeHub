@@ -6,19 +6,18 @@ import Image from "next/image";
 import cita from "../../assets/img_cita.svg";
 import doctor from "../../assets/img_doctor.svg";
 import expediente from "../../assets/img_expediente.svg";
-import hospital from "../../assets/img_hospital.svg";
 import receta from "../../assets/img_receta.svg";
 import Maps from "../../components/Maps";
 
-const Dashboard = async () => {
+const Inicio = async () => {
   const session = await getServerSession();
   if (!session) {
     redirect("/");
   }
   return (
-    <div className="py-4 md:py-8 flex flex-col md:flex-row items-center justify-center min-h-screen mx-auto">
-      <div className="flex flex-col space-y-4 items-start md:items-start text-left mt-32 w-5/6 md:w-auto">
-        <div className="w-full md:w-auto text-950 text-2xl sm:text-3xl md:text-4xl font-bold font text-center md:mb-8 md:text-left md:self-start">
+    <div className="py-4 md:py-8 flex flex-col md:flex-row items-center justify-center">
+      <div className="flex-col space-y-4 md:mr-8 text-left mt-32 md:mt-0 w-5/6 md:w-auto">
+        <div className="w-full md:mr-8 md:w-auto text-950 text-3xl sm:text-2xl md:text-3xl font-semibold font text-center md:mb-8 md:text-left md:self-start">
           Servicios
         </div>
 
@@ -28,7 +27,7 @@ const Dashboard = async () => {
         >
           <Image src={cita} width={48} height={48} alt="citas" />
           <div className="flex-grow">
-            <span className="text-950 text-lg sm:text-2xl md:text-3xl mr-2 font-semibold">
+            <span className="text-950 text-lg  md:text-2xl mr-2 font-semibold">
               Hacer citas médicas
             </span>
           </div>
@@ -40,7 +39,7 @@ const Dashboard = async () => {
         >
           <Image src={receta} width={48} height={48} alt="recetas" />
           <div className="flex-grow">
-            <span className="text-950 text-lg sm:text-2xl md:text-3xl mr-2 font-semibold">
+            <span className="text-950 text-lg  md:text-2xl mr-2 font-semibold">
               Consultar recetas médicas
             </span>
           </div>
@@ -51,7 +50,7 @@ const Dashboard = async () => {
         >
           <Image src={doctor} width={48} height={48} alt="doctores" />
           <div className="flex-grow">
-            <span className="text-950 text-lg sm:text-2xl md:text-3xl mr-2 font-semibold">
+            <span className="text-950 text-lg  md:text-2xl mr-2 font-semibold">
               Consultar doctores
             </span>
           </div>
@@ -62,17 +61,17 @@ const Dashboard = async () => {
         >
           <Image src={expediente} width={48} height={48} alt="expediente" />
           <div className="flex-grow">
-            <span className="text-950 text-lg sm:text-2xl md:text-3xl mr-2 font-semibold">
+            <span className="text-950 text-lg  md:text-2xl mr-2 font-semibold">
               Consultar expediente médico
             </span>
           </div>
         </Link>
       </div>
-      <div className="flex flex-col space-y-4 items-start md:items-start text-left w-5/6 md:w-auto">
-      <div className="w-full mt-6 md:w-auto text-950 text-2xl sm:text-3xl md:text-4xl font-bold font text-center md:mb-8 md:text-left md:self-start">
-          Consultar Hospitales
+      <div className="flex flex-col md:mt-12 mt-4 md:items-start text-center w-5/6 md:w-auto">
+        <div className="w-full md:w-auto mx-auto  text-950 text-2xl sm:text-xl md:text-3xl font-semibold font text-center md:mb-0 md:text-left md:self-start">
+          Hospitales
         </div>
-        <div >
+        <div>
           <Maps />
         </div>
       </div>
@@ -80,4 +79,4 @@ const Dashboard = async () => {
   );
 };
 
-export default Dashboard;
+export default Inicio;
