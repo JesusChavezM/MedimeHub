@@ -47,7 +47,7 @@ const Navbar = () => {
           </div>
           <div className="hidden sm:flex gap-2 sm:flex-row mx-2 sm:mx-20">
             <div className="text-center text-violet-900 text-xl sm:text-2xl font-bold my-2 sm:my-0 sm:mx-10">
-              <Link href="/dashboard">Home</Link>
+              <Link href="/inicio">Inicio</Link>
             </div>
             <div className="text-center text-violet-900 text-xl sm:text-2xl font-bold my-2 sm:my-0 sm:mx-10">
               <Link href="/about">About</Link>
@@ -60,7 +60,7 @@ const Navbar = () => {
           {isOpen && (
             <div className="sm:hidden flex flex-col gap-2 sm:flex-row mx-2 sm:mx-20">
               <div className="text-center text-violet-900 text-xl sm:text-2xl font-bold my-2 sm:my-0 sm:mx-10">
-                <Link href="/dashboard">Home</Link>
+                <Link href="/inicio">Inicio</Link>
               </div>
               <div className="text-center text-violet-900 text-xl sm:text-2xl font-bold my-2 sm:my-0 sm:mx-10">
                 <Link href="/about">About</Link>

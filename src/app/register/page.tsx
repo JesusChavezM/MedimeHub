@@ -12,7 +12,7 @@ const Register = () => {
 
   useEffect(() => {
     if (sessionStatus === "authenticated") {
-      router.replace("/dashboard");
+      router.replace("/inicio");
     }
   }, [sessionStatus, router]);
 
@@ -58,7 +58,7 @@ const Register = () => {
       }
       if (res.status === 200) {
         setError("");
-        router.push("/dashboard");
+        router.push("/inicio");
       }
     } catch (error) {
       setError("Error, try again");
