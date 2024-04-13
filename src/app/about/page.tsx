@@ -2,7 +2,7 @@ import Image from "next/image";
 
 export default function UsersPage() {
     return (
-      <div className="flex flex-col items-center justify-center min-h-screen xl:min-h-90vh mx-auto xl:flex-row">
+      <div className="flex flex-col items-center mt-40 xl:mt-0 justify-center xl:min-h-90vh xl:flex-row">
         <div className="flex flex-col space-y-8 items-center xl:w-2/4 xl:space-y-6">
           <div className="text-900 text-2xl font-bold font text-center xl:text-4xl">
             Nuestro Proposito
