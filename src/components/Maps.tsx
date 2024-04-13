@@ -21,7 +21,7 @@ const Home: NextPage = () => {
   );
 
   const { isLoaded } = useLoadScript({
-    googleMapsApiKey: process.env.NEXT_PUBLIC_GOOGLE_MAPS_KEY as string,
+    googleMapsApiKey: process.env.NEXT_PUBLIC_GOOGLE_MAPS_ID as string,
     libraries: libraries as any,
   });
 
