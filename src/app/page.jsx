@@ -24,10 +24,8 @@ export default function Home() {
           quiera que estés.
         </div>
         <Link href="/register">
-          <div className="bg-600 rounded-lg justify-center items-center gap-2.5 inline-flex h-11 sm:my-0">
-            <div className="text-50 text-xl sm:text-2xl font-bold mx-6">
-              <span className="cursor-pointer hover:bg-red">¡Registrate para comenzar </span>
-            </div>
+          <div className="bg-600 rounded-full my-4 justify-center items-center inline-flex h-11 sm:my-0 hover:bg-300  hover:text-900 text-50 text-xl sm:text-2xl font-bold">
+            <span className="cursor-pointer mx-6">¡Registrate para comenzar </span>
           </div>
         </Link>
       </div>
