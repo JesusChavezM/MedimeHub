@@ -33,41 +33,59 @@ const Navbar = () => {
             >
               <Image src={logo} width={65} height={65} alt="Logo" />
             </div>
-            <div className="text-2xl sm:text-4xl font-bold text-violet-600">
+            <div className="text-2xl sm:text-3xl font-bold text-violet-600">
               <Link href="/">MedimeHub</Link>
             </div>
             <div className="sm:hidden flex gap-2 sm:flex-row ml-36 sm:mx-20">
-            <button
-              onClick={toggleMenu}
-              className="text-violet-900 text-xl font-bold my-2 sm:my-0 sm:mx-10"
-            >
-              <Image src={ImgMenu} alt="Sing out" width={40} height={40} />
-            </button>
-          </div>
+              <button
+                onClick={toggleMenu}
+                className="text-violet-900 text-xl font-bold my-2 sm:my-0 sm:mx-10"
+              >
+                <Image src={ImgMenu} alt="Sing out" width={40} height={40} />
+              </button>
+            </div>
           </div>
           <div className="hidden sm:flex gap-2 sm:flex-row mx-2 sm:mx-20">
-            <div className="text-center text-violet-900 text-xl sm:text-2xl font-bold my-2 sm:my-0 sm:mx-10">
-              <Link href="/inicio">Inicio</Link>
+            <div className="text-center text-violet-900 text-xl sm:text-2xl font-bold my-2 sm:my-0 sm:mx-6">
+              <Link className="cursor-pointer hover:text-600" href="/inicio">Inicio</Link>
             </div>
             <div className="text-center text-violet-900 text-xl sm:text-2xl font-bold my-2 sm:my-0 sm:mx-10">
-              <Link href="/about">About</Link>
+              <Link className="cursor-pointer hover:text-600 " href="/about">About</Link>
             </div>
             <div className="text-center text-violet-900 text-xl sm:text-2xl font-bold my-2 sm:my-0 sm:mx-10">
-              <Link href="/">FAQ</Link>
+              <Link className="cursor-pointer hover:text-600 " href="/">FAQ</Link>
             </div>
+            {session && session.user.email === "chavezmele7030@gmail.com" ? (
+              <div className="text-center text-violet-900 text-xl sm:text-2xl font-bold my-2 sm:my-0 sm:mx-10">
+                <Link className="cursor-pointer hover:text-600" href="/dashboard">
+                  Dashboard
+                </Link>
+              </div>
+            ) : (
+              <></>
+            )}
           </div>
-          
+
           {isOpen && (
-            <div className="sm:hidden flex flex-col gap-2 sm:flex-row mx-2 sm:mx-20">
+            <div className="sm:hidden flex flex-col sm:flex-row mx-2 sm:mx-20">
               <div className="text-center text-violet-900 text-xl sm:text-2xl font-bold my-2 sm:my-0 sm:mx-10">
-                <Link href="/inicio">Inicio</Link>
+                <Link className="cursor-pointer hover:text-600" href="/inicio">Inicio</Link>
               </div>
               <div className="text-center text-violet-900 text-xl sm:text-2xl font-bold my-2 sm:my-0 sm:mx-10">
-                <Link href="/about">About</Link>
+                <Link className="cursor-pointer hover:text-600" href="/about">About</Link>
               </div>
-              <div className="text-center text-violet-900 text-xl sm:text-2xl font-bold my-2 sm:my-0 sm:mx-10">
-                <Link href="/faq">FAQ</Link>
+              <div className="text-center text-violet9900 text-xl sm:text-2xl font-bold my-2 sm:my-0 sm:mx-10">
+                <Link className="cursor-pointe hover:text-600" href="/faq">FAQ</Link>
               </div>
+              {session && session.user.email === "chavezmele7030@gmail.com" ? (
+                <div className="text-center text-violet-900 text-xl sm:text-2xl font-bold my-2 sm:my-0 sm:mx-10">
+                  <Link className="cursor-pointer hover:text-600" href="/dashboard">
+                    Dashboard
+                  </Link>
+                </div>
+              ) : (
+                <></>
+              )}
             </div>
           )}
           <div className="sm:flex-row  inline-block flex-col sm:items-center">
@@ -78,13 +96,6 @@ const Navbar = () => {
                     Iniciar sesión
                   </span>
                 </Link>
-                {/* <Link href="/register">
-                  <div className="bg-600 rounded-lg justify-center items-center gap-2.5 inline-flex h-11 sm:my-0">
-                    <div className="text-50 text-xl sm:text-2xl font-bold mx-6">
-                      <span className="cursor-pointer">Registrarse</span>
-                    </div>
-                  </div>
-                </Link> */}
               </>
             ) : (
               <>
@@ -99,7 +110,7 @@ const Navbar = () => {
                     </p>
                     <button
                       onClick={() => {
-                        signOut({ callbackUrl: "/" ,redirect: true});
+                        signOut({ callbackUrl: "/", redirect: true });
                       }}
                     >
                       <Image

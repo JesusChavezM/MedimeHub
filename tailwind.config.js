@@ -30,6 +30,9 @@ module.exports = {
         "40vh": "40vh",
         "30vh": "30vh",
       },
+      maxHeight: {
+        "400px": "400px",
+      }
     },
   },
   plugins: [],
