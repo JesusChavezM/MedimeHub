@@ -47,17 +47,28 @@ const Navbar = () => {
           </div>
           <div className="hidden sm:flex gap-2 sm:flex-row mx-2 sm:mx-20">
             <div className="text-center text-violet-900 text-xl sm:text-2xl font-bold my-2 sm:my-0 sm:mx-6">
-              <Link className="cursor-pointer hover:text-600" href="/inicio">Inicio</Link>
+              <Link className="cursor-pointer hover:text-600" href="/inicio">
+                Inicio
+              </Link>
             </div>
             <div className="text-center text-violet-900 text-xl sm:text-2xl font-bold my-2 sm:my-0 sm:mx-10">
-              <Link className="cursor-pointer hover:text-600 " href="/about">About</Link>
+              <Link className="cursor-pointer hover:text-600 " href="/about">
+                About
+              </Link>
             </div>
             <div className="text-center text-violet-900 text-xl sm:text-2xl font-bold my-2 sm:my-0 sm:mx-10">
-              <Link className="cursor-pointer hover:text-600 " href="/">FAQ</Link>
+              <Link className="cursor-pointer hover:text-600 " href="/">
+                FAQ
+              </Link>
             </div>
-            {session && session.user.email === "chavezmele7030@gmail.com" || "jesus@admin.com	" ? (
+            {session &&
+            (session.user.email === "chavezmele7030@gmail.com" ||
+              session.user.email === "jesus@admin.com") ? (
               <div className="text-center text-violet-900 text-xl sm:text-2xl font-bold my-2 sm:my-0 sm:mx-10">
-                <Link className="cursor-pointer hover:text-600" href="/dashboard">
+                <Link
+                  className="cursor-pointer hover:text-600"
+                  href="/dashboard"
+                >
                   Dashboard
                 </Link>
               </div>
@@ -69,17 +80,28 @@ const Navbar = () => {
           {isOpen && (
             <div className="sm:hidden flex flex-col sm:flex-row mx-2 sm:mx-20">
               <div className="text-center text-violet-900 text-xl sm:text-2xl font-bold my-2 sm:my-0 sm:mx-10">
-                <Link className="cursor-pointer hover:text-600" href="/inicio">Inicio</Link>
+                <Link className="cursor-pointer hover:text-600" href="/inicio">
+                  Inicio
+                </Link>
               </div>
               <div className="text-center text-violet-900 text-xl sm:text-2xl font-bold my-2 sm:my-0 sm:mx-10">
-                <Link className="cursor-pointer hover:text-600" href="/about">About</Link>
+                <Link className="cursor-pointer hover:text-600" href="/about">
+                  About
+                </Link>
               </div>
               <div className="text-center text-violet9900 text-xl sm:text-2xl font-bold my-2 sm:my-0 sm:mx-10">
-                <Link className="cursor-pointe hover:text-600" href="/faq">FAQ</Link>
+                <Link className="cursor-pointe hover:text-600" href="/faq">
+                  FAQ
+                </Link>
               </div>
-              {session && session.user.email === "chavezmele7030@gmail.com" || "jesus@admin.com"	? (
+              {session &&
+              (session.user.email === "chavezmele7030@gmail.com" ||
+                session.user.email === "jesus@admin.com") ? (
                 <div className="text-center text-violet-900 text-xl sm:text-2xl font-bold my-2 sm:my-0 sm:mx-10">
-                  <Link className="cursor-pointer hover:text-600" href="/dashboard">
+                  <Link
+                    className="cursor-pointer hover:text-600"
+                    href="/dashboard"
+                  >
                     Dashboard
                   </Link>
                 </div>
