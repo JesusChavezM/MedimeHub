@@ -22,7 +22,7 @@ const Inicio = async () => {
         </div>
 
         <Link
-          href="/"
+          href="/appointment"
           className="flex flex-row items-center space-x-4 w-full rounded-lg bg-200 border border-600 hover:bg-300"
         >
           <Image src={cita} width={48} height={48} alt="citas" />
@@ -45,7 +45,7 @@ const Inicio = async () => {
           </div>
         </Link>
         <Link
-          href="/"
+          href="/doctors"
           className="flex flex-row items-center space-x-4 w-full rounded-lg bg-200 border border-600 hover:bg-300"
         >
           <Image src={doctor} width={48} height={48} alt="doctores" />
