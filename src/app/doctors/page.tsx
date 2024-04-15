@@ -37,12 +37,12 @@ const Doctors = () => {
 
   return (
     sessionStatus === "authenticated" && (
-      <div className="flex flex-col items-center mt-20">
+      <div className="flex flex-col items-center mt-28">
         <div className="container mx-auto">
     <div className="text-center mt-8">
       <h1 className="text-3xl font-semibold text-950">Doctores</h1>
     </div>
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4 mt-8 ">
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4 mt-2 p-4 ">
       {doctors.map((doctor) => (
         <div
           key={doctor._id}
