@@ -10,7 +10,7 @@ const DoctorSchema = new Schema({
         required: true
     },
     speciality: {
-        type: String,
+        type: [String],
         required: true
     },
     phone: {

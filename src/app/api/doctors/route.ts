@@ -29,8 +29,13 @@ export async function GET(request: NextRequest) {
 };
 
 export const POST = async (request: any) => {
-  const { license, name, speciality, phone, clinic, hospital } = await request.json();
+  let { license, name, speciality, phone, clinic, hospital } = await request.json();
   
+  // Si speciality es una cadena, la dividimos por las comas para obtener un array
+  if (typeof speciality === 'string') {
+    speciality = speciality.split(',').map((s: string) => s.trim());
+  }
+
   await connect();
 
   const existingDoctor = await Doctor.findOne({ license });
@@ -42,7 +47,7 @@ export const POST = async (request: any) => {
   const newDoctor = new Doctor({
     license,
     name,
-    speciality,
+    speciality, // Ahora speciality es un array
     phone,
     clinic,
     hospital,
@@ -51,11 +56,14 @@ export const POST = async (request: any) => {
     await newDoctor.save();
     return new NextResponse("Doctor registrado", { status: 200 });
   } catch (err: any) {
+    console.error("Error:", err);
     return new NextResponse(err, {
       status: 500,
     });
   }
 };
+
+
 
 
 export async function DELETE(request: NextRequest) {

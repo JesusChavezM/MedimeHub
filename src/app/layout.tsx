@@ -1,6 +1,7 @@
 import { Inter } from "next/font/google";
 import Logo from "../assets/logo-landing.svg"
 import "./globals.css"
+import "../styles/Calendar.css";
 import { getServerSession } from "next-auth";
 import SessionProvider from "../lib/SessionProvider";
 import Navbar from "../components/Navbar";

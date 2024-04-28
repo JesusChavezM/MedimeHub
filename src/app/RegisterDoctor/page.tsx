@@ -14,10 +14,14 @@ function RegisterDoctor() {
     e.preventDefault();
     const license = e.target[0].value;
     const name = e.target[1].value;
-    const speciality = e.target[2].value;
+    let speciality = e.target[2].value; // Cambiado a let para poder reasignarlo
     const phone = e.target[3].value;
     const clinic = e.target[4].value;
     const hospital = e.target[5].value;
+
+    if (typeof speciality === 'string') {
+      speciality = speciality.split(',').map((s: string) => s.trim());
+    }
 
     try {
       const res = await fetch("/api/doctors", {

@@ -222,7 +222,10 @@ export default function UsersPage() {
                     {doctor.hospital}
                   </td>
                   <td className="border border-800 p-2 space-x-2">
-                    <button onClick={() => deleteDoctor(doctor._id)}>
+                    <button onClick={() => {
+                      deleteDoctor(doctor._id);
+                      window.location.reload();
+                    }}>
                       <Image
                         src={ImgDelete}
                         height={20}
@@ -304,6 +307,6 @@ export default function UsersPage() {
           </div>
         </div>
       </div>
-    </div>
+    </div >
   );
 }
