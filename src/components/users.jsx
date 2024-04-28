@@ -210,8 +210,9 @@ export default function UsersPage() {
                     {doctor.name}
                   </td>
                   <td className="border border-800 p-2 hidden md:table-cell">
-                    {doctor.speciality}
+                    {Array.isArray(doctor.speciality) ? doctor.speciality.join(', ') : doctor.speciality}
                   </td>
+
                   <td className="border border-800 p-2 hidden md:table-cell">
                     {doctor.phone}
                   </td>
@@ -267,9 +268,19 @@ export default function UsersPage() {
                       <p className="text-gray-500 truncate">
                         Cedula:{doctor.license}
                       </p>
-                      <p className="text-gray-500 truncate">
-                        Especialidad: {doctor.speciality}
-                      </p>
+                      <div className="text-gray-500">
+                        Especialidad:
+                        {Array.isArray(doctor.speciality)
+                          ? doctor.speciality.map((speciality, index) => (
+                            <div key={index} className="ml-4">
+                              {speciality}
+                            </div>
+                          ))
+                          : doctor.speciality
+                        }
+                      </div>
+
+
                       <p className="text-gray-500 truncate">
                         Telefono: {doctor.phone}
                       </p>

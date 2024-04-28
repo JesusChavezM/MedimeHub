@@ -67,40 +67,46 @@ function RegisterDoctor() {
         </h1>
 
         <form onSubmit={handleSubmit}>
+          <span className="text-800 text-sm">Cédula</span>
           <input
             type="text"
             className="w-full border border-600 text-black rounded px-3 py-2 mb-4 focus:outline-none focus:border-900 focus:text-black"
-            placeholder="Número de Licencia"
+            placeholder="20550388"
             required
           />
+          <span className="text-800 text-sm">Nombre completo</span>
           <input
             type="text"
             className="w-full border border-600 text-black rounded px-3 py-2 mb-4 focus:outline-none focus:border-900 focus:text-black"
-            placeholder="Nombre"
+            placeholder="Ruben Dario Martinez"
             required
           />
+          <span className="text-800 text-sm">Especialidad(es)</span>
           <input
             type="text"
             className="w-full border border-600 text-black rounded px-3 py-2 mb-4 focus:outline-none focus:border-900 focus:text-black"
-            placeholder="Especialidad"
+            placeholder="Medico general"
             required
           />
+          <span className="text-800 text-sm">Telefono</span>
           <input
             type="text"
             className="w-full border border-600 text-black rounded px-3 py-2 mb-4 focus:outline-none focus:border-900 focus:text-black"
-            placeholder="Teléfono"
+            placeholder="1234567890"
             required
           />
+          <span className="text-800 text-sm">Consultorio</span>
           <input
             type="text"
             className="w-full border border-600 text-black rounded px-3 py-2 mb-4 focus:outline-none focus:border-900 focus:text-black"
-            placeholder="Clínica"
+            placeholder="A5"
             required
           />
+          <span className="text-800 text-sm">Hospital</span>
           <input
             type="text"
             className="w-full border border-600 text-black rounded px-3 py-2 mb-4 focus:outline-none focus:border-900 focus:text-black"
-            placeholder="Hospital"
+            placeholder="Hospital los Angeles"
             required
           />
 

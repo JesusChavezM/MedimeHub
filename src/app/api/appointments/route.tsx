@@ -2,30 +2,37 @@ import Cita from '../../../models/citaSchema';
 import connect from '../../../lib/mongodb';
 import { NextResponse } from 'next/server';
 
+
+export const dynamic = "force-dynamic";
+
+export async function GET(request: any) {
+  await connect();
+  const citas = await Cita.find({});
+  return new NextResponse(JSON.stringify(citas), {
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
+}
+
 export const POST = async (request: any) => {
-  const { fechaHora, duracionEstimada, tipo, medicoAsignado, motivo } = await request.json();
+  let { doctorName, userName, appointmentDate } = await request.json();
 
   await connect();
 
-  const existingCita = await Cita.findOne({ fechaHora });
-
-  if (existingCita) {
-    return new NextResponse('Cita ya programada', { status: 400 });
-  }
-
   const newCita = new Cita({
-    fechaHora,
-    duracionEstimada,
-    tipo,
-    medicoAsignado,
-    motivo,
+    doctorName,
+    userName,
+    appointmentDate,
   });
 
   try {
     await newCita.save();
-    return new NextResponse('Cita is registered', { status: 200 });
+    return new NextResponse("Cita registrada", { status: 200 });
   } catch (err: any) {
-    console.error(err); // Imprimir el error en la consola para depurar
-    return new NextResponse('Error al guardar la cita', { status: 500 });
+    console.error("Error:", err);
+    return new NextResponse(err, {
+      status: 500,
+    });
   }
-};
+}

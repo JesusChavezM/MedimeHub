@@ -21,7 +21,7 @@ const Inicio = async () => {
           Servicios
         </div>
 
-        <Link
+        {/* <Link
           href="/appointment"
           className="flex flex-row items-center space-x-4 w-full rounded-lg bg-200 border border-600 hover:bg-300"
         >
@@ -31,7 +31,7 @@ const Inicio = async () => {
               Hacer citas médicas
             </span>
           </div>
-        </Link>
+        </Link> */}
 
         <Link
           href="/"
@@ -51,7 +51,7 @@ const Inicio = async () => {
           <Image src={doctor} width={48} height={48} alt="doctores" />
           <div className="flex-grow">
             <span className="text-950 text-lg  md:text-2xl mr-2 font-semibold">
-              Consultar doctores
+              Consultar doctores y Agendar
             </span>
           </div>
         </Link>

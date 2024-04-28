@@ -4,7 +4,6 @@ import Image from "next/image";
 import ImgDoctor from "../../assets/img_doctor.svg";
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
-import Link from "next/link";
 import Calendar from "../../components/calendar";
 import Imgid from "../../assets/img_id.svg";
 import ImgPhone from "../../assets/img_phone.svg";
@@ -40,6 +39,7 @@ const Doctors = () => {
     );
   }
 
+
   return (
     sessionStatus === "authenticated" && (
       <div className="flex flex-col items-center mt-28">
@@ -54,21 +54,18 @@ const Doctors = () => {
                 className="bg-100 rounded-lg border border-600 shadow-md"
               >
                 <div className="p-4 grid grid-cols-1 sm:grid-cols-2">
-                  {/* Columna Izquierda */}
                   <div>
                     <div className="flex items-center">
                       <Image
                         src={doctor.image || ImgDoctor}
-                        height={100} // Reducir el tamaño de la imagen
-                        width={100} // Reducir el tamaño de la imagen
+                        height={100}
+                        width={100}
                         className="rounded-tl-3xl border border-950"
                         alt="doctor"
                       />
-
                       <h2 className="text-lg font-bold text-950 px-8">
                         {doctor.name}
                       </h2>
-
                     </div>
                     <div className="mt-2 text-center flex flex-wrap">
                       {Array.isArray(doctor.speciality)
@@ -127,29 +124,36 @@ const Doctors = () => {
                           alt={doctor.id}
                         />
                         <div className="flex justify-center flex-1">
-                          {/* <span className="text-950 font-semibold">Hospital:</span> */}
                           <a href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(doctor.hospital)}`} target="_blank" rel="noopener noreferrer" className="text-900 text-lg overflow-hidden overflow-ellipsis whitespace-nowrap max-w-auto hover:underline hover:text-700">
                             {doctor.hospital}
                           </a>
                         </div>
                       </div>
-
-
-
-
-                      {/* <p className="text-900 font-semibold">
-                          Consultario:{" "}
-                        </p> */}
                     </div>
                   </div>
-
-                  {/* Columna Derecha */}
                   <div>
-                    <Calendar onDateTimeSelect={(dateTime) => console.log(dateTime)} />
+                    <Calendar onDateTimeSelect={(dateTime) => {
+                      const isoString = dateTime.toISOString();
+                      fetch('/api/appointments', {
+                        method: 'POST',
+                        headers: {
+                          'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify({
+                          doctorName: doctor.name,
+                          userName: session.user.name,
+                          appointmentDate: isoString,
+                        }),
+                      })
+                        .then(response => response.json())
+                        .then(data => console.log(data))
+                        .catch((error) => {
+                          console.error('Error:', error);
+                        });
+                    }} />
                   </div>
                 </div>
               </div>
-
             ))}
           </div>
         </div>
