@@ -54,7 +54,7 @@ const Calendar: FC<CalendarProps> = ({ onDateTimeSelect }) => {
     return (
         <div className="flex items-center justify-center h-full">
             {appointmentBooked ? (
-                <div className="flex flex-col items-center justify-center w-full h-full p-4 bg-200 rounded-2xl border border-800">
+                <div className="flex flex-col items-center justify-center w-full h-full p-4 bg-100 rounded-2xl">
                     <Image src={ImgConfirm} width={96} height={96} alt="Confirm" />
                     <span className="text-lg font-bold mt-2">Cita Agendada</span>
                     <button onClick={handleCancel} className="mt-4 px-4 py-2 bg-red-500 text-white rounded">Cambiar la hora</button>

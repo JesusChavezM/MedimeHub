@@ -58,3 +58,41 @@ export async function DELETE(request: NextRequest) {
     await client.close();
   }
 }
+
+export async function PUT(request: NextRequest) {
+  const url = process.env.MONGO_URI;
+  
+  // Parse the URL to get the query parameters
+  const { query } = parse(request.nextUrl.href, true);
+  const { email } = query;
+
+  if (Array.isArray(email) || !email) {
+    return NextResponse.json({ error: 'Se requiere el correo electrónico del usuario para actualizarlo' }, { status: 400 });
+  }
+
+  // Parse the body manually
+  const body = await request.json();
+  const { email: newEmail, name, gender, birthdate, phone, address, state, country, zipCode } = body;
+
+  const client = new MongoClient(url);
+
+  try {
+    await client.connect();
+
+    const collection = client.db("test").collection("users");
+
+    const result = await collection.updateOne({ email: email }, { $set: { email: newEmail, name, gender, birthdate, phone, address, state, country, zipCode } });
+
+    if (result.matchedCount === 0) {
+      return NextResponse.json({ error: 'Usuario no encontrado' }, { status: 404 });
+    }
+
+    return NextResponse.json({ message: 'Usuario actualizado correctamente' });
+  } catch (err) {
+    console.error("Error:", err);
+    return NextResponse.json({ error: 'Error conectando a la base de datos' }, { status: 500 });
+  } finally {
+    await client.close();
+  }
+}
+
