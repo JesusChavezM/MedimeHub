@@ -64,7 +64,7 @@ const Navbar = () => {
               </Link>
             </div>
             <div className="text-center text-violet-900 text-xl sm:text-2xl font-bold my-2 sm:my-0 sm:mx-10">
-              <Link className="cursor-pointer hover:text-600 " href="/">
+              <Link className="cursor-pointer hover:text-600 " href="/faq">
                 FAQ
               </Link>
             </div>
