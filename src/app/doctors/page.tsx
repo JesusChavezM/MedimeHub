@@ -128,6 +128,7 @@ const Doctors = () => {
                           body: JSON.stringify({
                             doctorName: doctor.name,
                             userEmail: session.user.email,
+                            speciality: doctor.speciality,
                             appointmentDate: isoString,
                           }),
                         })

@@ -124,14 +124,18 @@ const Register = () => {
                             required
                         />
                         <span className="text-800 text-md text-center font-bold mb-8">Sexo</span>
-                        <input
-                            type="text"
+                        <select
                             value={gender}
                             onChange={(e) => setGender(e.target.value)}
                             className="w-full border border-600 text-black rounded px-3 py-2 mb-4 focus:outline-none focus:border-900 focus:text-black"
-                            placeholder="Sexo"
                             required
-                        />
+                        >
+                            <option value="">Selecciona el género</option>
+                            <option value="Masculino">Masculino</option>
+                            <option value="Femenino">Femenino</option>
+                            <option value="Otro">Otro</option>
+                        </select>
+
                         <span className="text-800 text-md text-center font-bold mb-8">Fecha de nacimiento</span>
                         <input
                             type="date"

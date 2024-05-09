@@ -16,13 +16,18 @@ export async function GET(request: any) {
 }
 
 export const POST = async (request: any) => {
-  let { doctorName, userEmail, appointmentDate } = await request.json();
+  let { doctorName, userEmail, speciality, appointmentDate } = await request.json();
+
+  if (typeof speciality === 'string') {
+    speciality = speciality.split(',').map((s: string) => s.trim());
+  }
 
   await connect();
 
   const newCita = new Cita({
     doctorName,
     userEmail,
+    speciality,
     appointmentDate,
   });
 

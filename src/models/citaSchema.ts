@@ -9,6 +9,10 @@ const citaSchema = new Schema({
     type: String,
     required: true,
   },
+  speciality: {
+    type: [String],
+    required: true
+},
   appointmentDate: {
     type: Date,
     required: true,
