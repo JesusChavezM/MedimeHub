@@ -25,6 +25,13 @@ const Register = () => {
     const email = e.target[0].value;
     const password = e.target[1].value;
     const name = e.target[2].value;
+    const gender = e.target[3].value;
+    const birthdate = e.target[4].value;
+    const phone = e.target[5].value;
+    const address = e.target[6].value;
+    const state = e.target[7].value;
+    const country = e.target[8].value;
+    const zipCode = e.target[9].value;
 
     if (!isValidEmail(email)) {
       setError("Email is invalid");
@@ -51,6 +58,13 @@ const Register = () => {
           email,
           password,
           name,
+          gender,
+          birthdate,
+          phone,
+          address,
+          state,
+          country,
+          zipCode,
         }),
       });
       if (res.status === 400) {
@@ -92,6 +106,48 @@ const Register = () => {
               type="text"
               className="w-full border border-600 text-black rounded px-3 py-2 mb-4 focus:outline-none focus:border-900 focus:text-black"
               placeholder="Nombre"
+              required
+            />
+            <input
+              type="text"
+              className="w-full border border-600 text-black rounded px-3 py-2 mb-4 focus:outline-none focus:border-900 focus:text-black"
+              placeholder="Sexo"
+              required
+            />
+            <input
+              type="date"
+              className="w-full border border-600 text-black rounded px-3 py-2 mb-4 focus:outline-none focus:border-900 focus:text-black"
+              placeholder="Fecha de nacimiento"
+              required
+            />
+            <input
+              type="text"
+              className="w-full border border-600 text-black rounded px-3 py-2 mb-4 focus:outline-none focus:border-900 focus:text-black"
+              placeholder="Telefono"
+              required
+            />
+            <input
+              type="text"
+              className="w-full border border-600 text-black rounded px-3 py-2 mb-4 focus:outline-none focus:border-900 focus:text-black"
+              placeholder="Direccion"
+              required
+            />
+            <input
+              type="text"
+              className="w-full border border-600 text-black rounded px-3 py-2 mb-4 focus:outline-none focus:border-900 focus:text-black"
+              placeholder="Estado"
+              required
+            />
+            <input
+              type="text"
+              className="w-full border border-600 text-black rounded px-3 py-2 mb-4 focus:outline-none focus:border-900 focus:text-black"
+              placeholder="Pais"
+              required
+            />
+            <input
+              type="text"
+              className="w-full border border-600 text-black rounded px-3 py-2 mb-4 focus:outline-none focus:border-900 focus:text-black"
+              placeholder="Codigo Postal"
               required
             />
             <button

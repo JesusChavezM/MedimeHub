@@ -32,7 +32,12 @@ module.exports = {
       },
       maxHeight: {
         "400px": "400px",
-      }
+        "90vh": "90vh",
+      },
+      maxWidth: {
+        "400px": "400px",
+        "90vh": "90vh",
+      },
     },
   },
   plugins: [],

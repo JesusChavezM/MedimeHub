@@ -14,6 +14,34 @@ const userSchema = new Schema({
         type: String,
         required: [true, 'Name is required']
     },
+    gender: {
+        type: String,
+        required: [true, 'Gender is required']
+    },
+    birthdate: {
+        type: String,
+        required: [true, 'Birthdate is required']
+    },
+    phone: {
+        type: String,
+        required: [true, 'Phone is required']
+    },
+    address: {
+        type: String,
+        required: [true, 'Address is required']
+    },
+    state: {
+        type: String,
+        required: [true, 'State is required']
+    },
+    country: {
+        type: String,
+        required: [true, 'Country is required']
+    },
+    zipCode: {
+        type: String,
+        required: [true, 'ZipCode is required']
+    },
 }, { timestamps: true }
 
 );

@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import logo from "../assets/logo-landing.svg";
@@ -8,11 +8,18 @@ import singout from "../assets/singout.svg";
 import ImgMenu from "../assets/img_menu.svg";
 import { signOut, useSession } from "next-auth/react";
 import { redirect } from "next/dist/server/api-utils";
+import { usePathname, useSearchParams } from "next/navigation";
 
 const Navbar = () => {
   const { data: session }: any = useSession();
+  const pathname = usePathname()
+  const searchParams = useSearchParams()
 
   const [isOpen, setIsOpen] = useState(false);
+
+  useEffect(() => {
+    setIsOpen(false);
+  }, [pathname, searchParams])
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
@@ -34,7 +41,7 @@ const Navbar = () => {
               <Image src={logo} width={65} height={65} alt="Logo" />
             </div>
             <div className="text-2xl sm:text-3xl font-bold text-violet-600">
-              <Link href="/">MedimeHub</Link>
+              <Link href="/inicio">MedimeHub</Link>
             </div>
             <div className="sm:hidden flex gap-2 sm:flex-row ml-36 sm:mx-20">
               <button
@@ -57,7 +64,7 @@ const Navbar = () => {
               </Link>
             </div>
             <div className="text-center text-violet-900 text-xl sm:text-2xl font-bold my-2 sm:my-0 sm:mx-10">
-              <Link className="cursor-pointer hover:text-600 " href="/">
+              <Link className="cursor-pointer hover:text-600 " href="/faq">
                 FAQ
               </Link>
             </div>
@@ -121,13 +128,14 @@ const Navbar = () => {
               </>
             ) : (
               <>
+              <Link href="/profile">
                 <div className="w-auto h-14 flex px-4 sm:justify-between justify-center">
                   <div className="px-4 rounded-xl bg-300 border border-900 justify-center items-center gap-2.5 inline-flex">
                     <img
                       src={session.user.image || ImgUser}
                       className="flex w-10 h-10 rounded-full"
                     />
-                    <p className="text-purple-900 text-xl font-extrabold text-center w-full">
+                    <p className="text-purple-900 text-xl font-extrabold text-center w-full break-all">
                       {session.user.name}
                     </p>
                     <button
@@ -144,6 +152,7 @@ const Navbar = () => {
                     </button>
                   </div>
                 </div>
+              </Link>
               </>
             )}
           </div>

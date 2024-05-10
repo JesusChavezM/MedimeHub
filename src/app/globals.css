@@ -6,14 +6,18 @@ body {
     background-image: url('/static/media/pill-bg.png');
     background-repeat: repeat;
     background-color: #f3f2ff;
-  }
+}
 
-  ::-webkit-scrollbar {
-    width: 5px; /* Ancho de la barra de desplazamiento */
-  }
-  
-  /* Estilos para el controlador de la barra de desplazamiento */
-  ::-webkit-scrollbar-thumb {
-    background-color: #000000; /* Color del controlador */
-    border-radius: 5px; /* Radio de borde del controlador */
-  } 
+/* Estilos para la barra de desplazamiento delgada */
+::-webkit-scrollbar {
+  width: 5px; /* Ancho de la barra de desplazamiento */
+}
+::-webkit-scrollbar:horizontal {
+  height: 2px; /* Altura de la barra de desplazamiento */
+}
+
+
+::-webkit-scrollbar-thumb {
+  background-color: #3F11A1; /* Color del controlador */
+  border-radius: 20px; /* Radio de borde del controlador */
+}
