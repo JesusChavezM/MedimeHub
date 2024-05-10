@@ -1,5 +1,6 @@
 import Faq from '../../../models/faq';
 import connect from '../../../lib/mongodb';
+import { parse } from 'url';
 import { NextResponse } from 'next/server';
 
 export const dynamic = "force-dynamic";
@@ -36,7 +37,8 @@ export const POST = async (request: any) => {
 }
 
 export const DELETE = async (request: any) => {
-    let { id } = await request.json();
+    const { query } = parse(request.nextUrl.href, true);
+    const { id } = query;
 
     await connect();
 
