@@ -12,6 +12,7 @@ import usePlacesAutocomplete, {
   getLatLng,
 } from "use-places-autocomplete";
 
+
 const Home: NextPage = () => {
   const [lat, setLat] = useState(28.6366525930481);
   const [lng, setLng] = useState(-106.07661059120282);
@@ -42,13 +43,12 @@ const Home: NextPage = () => {
   }
 
   return (
-    <div className="flex flex-col justify-center items-center">
+    <div className=" flex-col">
       <div className="w-full h-full my-3">
         <PlacesAutocomplete
           onAddressSelect={(address) => {
             getGeocode({ address: address }).then((results) => {
               const { lat, lng } = getLatLng(results[0]);
-
               setLat(lat);
               setLng(lng);
             });
@@ -62,7 +62,7 @@ const Home: NextPage = () => {
           zoom={16}
           center={mapCenter}
           mapTypeId={google.maps.MapTypeId.ROADMAP}
-          mapContainerStyle={{ width: "100%", height: "100%", borderRadius: 8, overflow: "hidden", border: "2px solid #3F11A1"}}
+          mapContainerStyle={{ width: "100%", height: "100%", borderRadius: 8, overflow: "hidden", border: "2px solid #3F11A1" }}
           onLoad={(map) => console.log("Map Loaded")}
         >
           <MarkerF
@@ -114,7 +114,7 @@ const PlacesAutocomplete = ({
             clearSuggestions();
             onAddressSelect && onAddressSelect(description);
           }}
-          className="p-2 bg-100 border-1 border-500 overflow-x-hidden cursor-pointer"
+          className="relative p-2 bg-100 border border-gray-500 overflow-hidden w-full text-left cursor-pointer whitespace-nowrap overflow-ellipsis"
         >
           <strong>{main_text}</strong> <small>{secondary_text}</small>
         </li>
@@ -123,17 +123,17 @@ const PlacesAutocomplete = ({
   };
 
   return (
-    <div className="rounded-md">
+    <div className="rounded-md w-full">
       <input
         value={value}
-        className="w-full p-2 border border-600 bg-200 rounded-md text-950"
+        className="w-full p-2 border border-600 bg-200 rounded-md text-950 "
         disabled={!ready}
         onChange={(e) => setValue(e.target.value)}
         placeholder="Hospital Angeles"
       />
 
       {status === "OK" && (
-        <ul className="w-full overflow-x-hidden p-1">{renderSuggestions()}</ul>
+        <ul className="absolute z-10 w-[356px] h-[400px] xl:w-[750px] xl:h-[550px] overflow-hidden rounded-b-lg border border-600">{renderSuggestions()}</ul>
       )}
     </div>
   );
