@@ -6,7 +6,7 @@ import {
   CircleF,
 } from "@react-google-maps/api";
 import type { NextPage } from "next";
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import usePlacesAutocomplete, {
   getGeocode,
   getLatLng,
@@ -16,6 +16,7 @@ import usePlacesAutocomplete, {
 const Home: NextPage = () => {
   const [lat, setLat] = useState(28.6366525930481);
   const [lng, setLng] = useState(-106.07661059120282);
+  const [locations, setLocations] = useState([]);
 
   const libraries = useMemo(() => ["places"], []);
   const mapCenter = useMemo(() => ({ lat: lat, lng: lng }), [lat, lng]);
@@ -28,6 +29,16 @@ const Home: NextPage = () => {
     }),
     []
   );
+  
+  useEffect(() => {
+    const getLocations = async () => {
+      const response = await fetch("/api/locations", { cache: "no-store" });
+      const data = await response.json();
+      setLocations(data);
+    };
+
+    getLocations();
+  }, []);
 
   const { isLoaded } = useLoadScript({
     googleMapsApiKey: process.env.NEXT_PUBLIC_GOOGLE_MAPS_ID as string,
@@ -56,7 +67,7 @@ const Home: NextPage = () => {
         />
       </div>
 
-      <div className="w-[356px] h-[400px] xl:w-[750px] xl:h-[550px]">
+      <div className="w-[356px] h-[400px] xl:w-[650px] xl:h-[450px]">
         <GoogleMap
           options={mapOptions}
           zoom={16}
@@ -65,10 +76,13 @@ const Home: NextPage = () => {
           mapContainerStyle={{ width: "100%", height: "100%", borderRadius: 8, overflow: "hidden", border: "2px solid #3F11A1" }}
           onLoad={(map) => console.log("Map Loaded")}
         >
-          <MarkerF
-            position={mapCenter}
-            onLoad={() => console.log("Marker Loaded")}
-          />
+          {locations.map((location, index) => (
+            <MarkerF
+              key={index}
+              position={{ lat: location.lat, lng: location.lng }}
+              onLoad={() => console.log("Marker Loaded")}
+            />
+          ))}
         </GoogleMap>
       </div>
     </div>
@@ -133,7 +147,7 @@ const PlacesAutocomplete = ({
       />
 
       {status === "OK" && (
-        <ul className="absolute z-10 w-[356px] h-[400px] xl:w-[750px] xl:h-[550px] overflow-hidden rounded-b-lg border border-600">{renderSuggestions()}</ul>
+        <ul className="absolute z-10 w-[356px] h-[400px] xl:w-[650px] xl:h-[450px] overflow-hidden rounded-b-lg border border-600">{renderSuggestions()}</ul>
       )}
     </div>
   );

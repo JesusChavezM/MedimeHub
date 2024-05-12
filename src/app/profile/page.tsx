@@ -52,8 +52,8 @@ const Profile = () => {
 
     return (
         sessionStatus === "authenticated" && (
-            <div className="flex items-center justify-center min-h-screen">
-                <div className='flex flex-col mt-20 items-center justify-center w-4/5'>
+            <div className="flex items-center justify-center min-h-screen mt-20">
+                <div className='flex flex-col items-center justify-center w-4/5'>
                     <h1 className="font-semibold text-4xl text-900">Hola,<span className='text-600'> {session.user.name}</span> !</h1>
                     <div className='flex mt-8 gap-6 w-full mb-4'>
                         {/* Perfil del usuario para editar */}

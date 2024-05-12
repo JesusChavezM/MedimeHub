@@ -20,19 +20,6 @@ const Inicio = async () => {
         <div className="w-full md:mr-8 md:w-auto text-950 text-3xl sm:text-2xl md:text-3xl font-semibold font text-center md:mb-8 md:text-left md:self-start">
           Servicios
         </div>
-
-        {/* <Link
-          href="/appointment"
-          className="flex flex-row items-center space-x-4 w-full rounded-lg bg-200 border border-600 hover:bg-300"
-        >
-          <Image src={cita} width={48} height={48} alt="citas" />
-          <div className="flex-grow">
-            <span className="text-950 text-lg  md:text-2xl mr-2 font-semibold">
-              Hacer citas médicas
-            </span>
-          </div>
-        </Link> */}
-
         <Link
           href="/"
           className="flex flex-row items-center space-x-4 w-full rounded-lg bg-200 border border-600 hover:bg-300"
