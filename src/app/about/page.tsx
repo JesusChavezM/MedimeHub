@@ -7,7 +7,7 @@ export default function UsersPage() {
           <div className="text-900 text-2xl font-bold font text-center xl:text-4xl">
             Nuestro Proposito
           </div>
-          <div className="m-8 text-950 font-medium text-justify text-xl xl:w-3/5 xl:text-3xl">
+          <div className="m-8 text-950 font-medium text-justify text-xl xl:w-3/5 xl:text-2xl">
             Creemos que la salud es un derecho fundamental y que todos merecen
             tener acceso a una atención médica de calidad. Nuestra plataforma fue
             creada con el propósito de empoderar a los pacientes y facilitarles el

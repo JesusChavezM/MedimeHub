@@ -52,7 +52,7 @@ const Profile = () => {
 
     return (
         sessionStatus === "authenticated" && (
-            <div className="flex items-center justify-center min-h-screen mt-20">
+            <div className="flex items-center justify-center mt-20">
                 <div className='flex flex-col items-center justify-center w-4/5'>
                     <h1 className="font-semibold text-4xl text-900">Hola,<span className='text-600'> {session.user.name}</span> !</h1>
                     <div className='flex mt-8 gap-6 w-full mb-4'>
@@ -84,7 +84,7 @@ const Profile = () => {
                             </div>
                         </div>
                         {/* Sección de las citas del usuario */}
-                        <div className="w-2/3 p-4 bg-100 border border-600 rounded-lg overflow-y-auto max-w-2/3 ">
+                        <div className="w-2/3 p-4 bg-100 border border-600 rounded-lg overflow-y-auto max-w-2/3 max-h-[90vh]">
                             <div className='flex flex-col items-center justify-center text-900 font-semibold'>
                                 <div className='flex flex-col items-center justify-center text-900 font-bold'>
                                     <h1 className=''>Tienes <span className="text-red-700">{citas?.length || 0}</span> citas agenda(as).</h1>
