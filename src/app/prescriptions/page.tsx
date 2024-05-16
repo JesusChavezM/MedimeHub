@@ -3,6 +3,8 @@ import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useSession } from "next-auth/react";
+import Image from "next/image";
+import ImgView from "../../assets/img_view.svg"
 
 
 function Page() {
@@ -63,7 +65,9 @@ function Page() {
                                                 <td className="border border-800 p-2">{prescriptions.doctor}</td>
                                                 <td className="border border-800 p-2">{prescriptions.specialty}</td>
                                                 <td className="border border-800 p-2">
-                                                    <button className="bg-200 border border-800 p-2 rounded-lg hover:bg-300 hover:text-800" onClick={() => viewPrescripcion(prescriptions._id)}>Ver Detalles</button>
+                                                    <button className="bg-200 border border-800 p-2 rounded-lg hover:bg-300 hover:text-800" onClick={() => viewPrescripcion(prescriptions._id)}>
+                                                        <Image src={ImgView} width={24} height={24} alt={prescriptions._id} />
+                                                    </button>
                                                 </td>
                                             </tr>
                                         </a>
