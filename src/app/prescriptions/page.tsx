@@ -42,9 +42,9 @@ function Page() {
                 <div className="flex flex-col items-center justify-center mt-32 w-4/5 sm:mt-16">
                     <div className="container mx-auto">
                         <div className="text-center">
-                            <h1 className="text-4xl font-semibold text-950">Nuestras <span className="text-700">Recetas Médicas</span></h1>
+                            <h1 className="text-4xl font-semibold text-950">Hola,<span className="text-700"> {session.user.name} </span> aqui estan todas tus recetas médicas:</h1>
                             <p className="text-xl text-950 mt-4 text-pretty">
-                                Aquí podrás consultar todas tus recetas médicas. Si deseas obtener más información sobre alguna de ellas, simplemente haz clic en el botón "Ver Detalles" y podrás ver todos los detalles de la receta.
+                                Aquí podrás consultar todas tus recetas médicas. Si deseas obtener más información sobre alguna de ellas, simplemente haz clic en el botón <span className="text-800 font-semibold">"Ver Detalles"</span> y podrás ver todos los detalles de la receta.
                             </p>
                         </div>
                         <div className="grid grid-cols-1 gap-4 p-2">
