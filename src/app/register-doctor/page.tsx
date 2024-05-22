@@ -185,7 +185,7 @@ const RegisterDoctor = () => {
                         />
                         <button
                             type="submit"
-                            className="w-full bg-900 text-white rounded px-3 py-2 mt-4 focus:outline-none focus:bg-800"
+                            className="w-full bg-900 text-white rounded-2xl px-3 py-2 mt-4 focus:outline-none focus:bg-800"
                         > Registrarse </button>
                     </form>
                 </div>

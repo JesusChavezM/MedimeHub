@@ -4,12 +4,18 @@ import Users from "../../components/users";
 import Doctors from "../../components/doctors";
 import Faqs from "../../components/faqs";
 import Locations from "../../components/Locations";
+import { useSession } from 'next-auth/react';
 
 export default function UsersPage() {
+    const { data: session } = useSession();
     const [activeComponent, setActiveComponent] = useState('users');
 
+    if (!session || session.user.role !== 'admin') {
+        return <div className="flex min-h-screen flex-col items-center text-2xl justify-between p-24 text-red-700 font-bold"><h1>Acceso Denegado...</h1></div>;
+    }
+
     const renderComponent = () => {
-        switch(activeComponent) {
+        switch (activeComponent) {
             case 'users':
                 return <Users />;
             case 'doctors':
