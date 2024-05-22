@@ -42,9 +42,33 @@ const userSchema = new Schema({
         type: String,
         required: [true, 'ZipCode is required']
     },
-}, { timestamps: true }
-
-);
+    role: {
+        type: String,
+        enum: ['admin', 'user', 'doctor'],
+        default: 'user',
+        required: [true, 'Role is required']
+    },
+    license: {
+        type: String,
+        required: function () { return this.role === 'doctor'; }
+    },
+    speciality: {
+        type: [String],
+        required: function () { return this.role === 'doctor'; }
+    },
+    clinic: {
+        type: String,
+        required: function () { return this.role === 'doctor'; }
+    },
+    hospital: {
+        type: String,
+        required: function () { return this.role === 'doctor'; }
+    },
+    adminemail: {
+        type: String,
+        required: function () { return this.role === 'admin'; }
+    }
+}, { timestamps: true });
 
 const User = models.User || model('User', userSchema);
 export default User;

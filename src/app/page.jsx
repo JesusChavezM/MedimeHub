@@ -16,7 +16,7 @@ import { useRouter } from "next/navigation";
 
 
 const Home = () => {
-  
+
   const router = useRouter();
   const { data: session, status: sessionStatus } = useSession();
   useEffect(() => {
@@ -43,11 +43,18 @@ const Home = () => {
             Porque tu salud importa: Medimehub pone el control en tus manos, donde
             quiera que estés.
           </div>
-          <Link href="/register">
-            <div className="bg-600 rounded-full my-4 justify-center items-center inline-flex h-11 sm:my-0 hover:bg-300  hover:text-900 text-50 text-xl sm:text-2xl font-bold">
-              <span className="cursor-pointer mx-6">¡Registrate para comenzar </span>
-            </div>
-          </Link>
+          <div className="p-4 gap-4 flex flex-col items-center">
+            <Link href="/register">
+              <div className="bg-600 rounded-full my-4 justify-center items-center inline-flex h-11 sm:my-0 hover:bg-300  hover:text-900 text-50 text-xl sm:text-2xl font-bold">
+                <span className="cursor-pointer mx-6">¡Registrate para comenzar!</span>
+              </div>
+            </Link>
+            <Link href="/register-doctor">
+              <div className="text-600 rounded-full my-4 justify-center items-center inline-flex h-11 sm:my-0 hover:bg-300  hover:text-900 text-xl sm:text-2xl font-semibold">
+                <span className="cursor-pointer mx-6">Registrarse como doctor </span>
+              </div>
+            </Link>
+          </div>
         </div>
         <div className="py-4 md:py-8 flex flex-col md:flex-row items-center justify-center min-h-screen mx-auto">
           <div className="flex flex-col space-y-8 items-start md:items-start text-left w-3/4 md:w-auto">
