@@ -21,8 +21,12 @@ const Inicio = () => {
     }
   }, [sessionStatus, router]);
 
-  if (sessionStatus === 'loading') {
-    return <div>Loading...</div>;
+  if (sessionStatus === "loading") {
+    return (
+      <div className="flex min-h-screen flex-col items-center justify-between p-24 text-900 font-bold">
+        <h1>Cargando ...</h1>
+      </div>
+    );
   }
 
   return (
