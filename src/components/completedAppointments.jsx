@@ -21,11 +21,11 @@ function CompletedAppointments() {
 
     return (
         sessionStatus === "authenticated" && (
-            <div className="flex items-center justify-center min-h-screen">
-                <div className="flex flex-col items-center justify-center w-4/5 sm:mt-16">
+            <div className="flex items-center justify-center">
+                <div className="flex flex-col items-center justify-center w-4/5 mt-4">
                     <div className="container mx-auto">
                         <div className="text-center">
-                            <h1 className="text-4xl font-semibold text-950">Hola <span className="text-700">{session.user.name}</span>, tienes {citas ? citas.length : 0} citas finalizadas</h1>
+                            <h1 className="text-4xl font-semibold text-950">Hola <span className="text-700">{session.user.name}</span>, tienes <span className="text-red-600">{citas ? citas.length : 0}</span> citas finalizadas</h1>
                         </div>
                         <div className="grid grid-cols-1 gap-4 p-2">
                             <table className="border-collapse w-full">

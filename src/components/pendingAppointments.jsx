@@ -1,5 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { useSession } from "next-auth/react";
+import Image from "next/image";
+import ImgChecked from "../assets/img_checked.svg"
+import ImgPrescription from "../assets/img_receta.svg";
+import ImgExpedient from "../assets/img_expediente.svg";
 
 function PendingAppointments() {
     const [error, setError] = useState("");
@@ -29,9 +33,9 @@ function PendingAppointments() {
                 },
                 body: JSON.stringify({}), // No es necesario enviar el ID en el cuerpo de la solicitud
             });
-    
+
             const data = await response.json();
-    
+
             if (response.ok) {
                 setCitas((prevCitas) => prevCitas.filter(cita => cita._id !== id));
             } else {
@@ -42,18 +46,18 @@ function PendingAppointments() {
             setError("Error updating appointment status");
         }
     };
-    
-    
-    
+
+
+
 
 
     return (
         sessionStatus === "authenticated" && (
-            <div className="flex items-center justify-center min-h-screen">
-                <div className="flex flex-col items-center justify-center w-4/5 sm:mt-16">
+            <div className="flex items-center justify-center">
+                <div className="flex flex-col items-center justify-center w-4/5 mt-4">
                     <div className="container mx-auto">
                         <div className="text-center">
-                            <h1 className="text-4xl font-semibold text-950">Hola <span className="text-700">{session.user.name}</span>, tienes {appointmentCount} citas pendientes</h1>
+                            <h1 className="text-3xl font-semibold text-950 p-2">Hola <span className="text-700">{session.user.name}</span>, tienes <span className="text-red-600">{appointmentCount}</span> citas pendientes</h1>
                         </div>
                         <div className="grid grid-cols-1 gap-4 p-2">
                             <table className="border-collapse w-full">
@@ -74,8 +78,12 @@ function PendingAppointments() {
                                             <td className="border border-800 p-2">{cita.pacientName}</td>
                                             <td className="border border-800 p-2">{new Date(cita.appointmentDate).toLocaleString()}</td>
                                             <td className="border border-800 p-2">
-                                                <button className="bg-200 border border-800 p-2 rounded-lg hover:bg-300 hover:text-800 mr-2" onClick={() => handleCreatePrescription(cita)}>Create Prescription</button>
-                                                <button className="bg-200 border border-800 p-2 rounded-lg hover:bg-300 hover:text-800" onClick={() => handleAddEntry(cita)}>Add Entry to Record</button>
+                                                <button className="bg-200 border border-800 p-2 rounded-lg hover:bg-300 hover:text-800 mr-2" onClick={() => handleCreatePrescription(cita)}>
+                                                    <Image src={ImgPrescription} alt="Prescription" width={25} height={25}></Image>
+                                                </button>
+                                                <button className="bg-200 border border-800 p-2 rounded-lg hover:bg-300 hover:text-800" onClick={() => handleAddEntry(cita)}>
+                                                    <Image src={ImgExpedient} alt="Add Entry" width={25} height={25}></Image>
+                                                </button>
                                                 {cita.status === 0 && (
                                                     <button
                                                         className="bg-200 border border-800 p-2 rounded-lg hover:bg-300 hover:text-800 ml-2"
@@ -83,7 +91,8 @@ function PendingAppointments() {
                                                             handleUpdateStatus(cita._id);
                                                         }}
                                                     >
-                                                        Mark as Finalizado
+                                                        <Image src={ImgChecked} alt="Check" width={25} height={25}>
+                                                        </Image>
                                                     </button>
                                                 )}
 
