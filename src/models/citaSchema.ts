@@ -5,6 +5,14 @@ const citaSchema = new Schema({
     type: String,
     required: true,
   },
+  doctorEmail: {
+    type: String,
+    required: true,
+  },
+  pacientName: {
+    type: String,
+    required: true,
+  },
   userEmail: {
     type: String,
     required: true,
@@ -12,10 +20,16 @@ const citaSchema = new Schema({
   speciality: {
     type: [String],
     required: true
-},
+  },
   appointmentDate: {
     type: Date,
     required: true,
+  },
+  status: {
+    type: Number,
+    enum: [0, 1], // 0: En proceso, 1: Finalizado
+    required: true,
+    default: 0,
   },
 });
 

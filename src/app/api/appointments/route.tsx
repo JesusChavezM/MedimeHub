@@ -16,7 +16,7 @@ export async function GET(request: any) {
 }
 
 export const POST = async (request: any) => {
-  let { doctorName, userEmail, speciality, appointmentDate } = await request.json();
+  let { doctorName, doctorEmail, pacientName, userEmail, speciality, appointmentDate } = await request.json();
 
   if (typeof speciality === 'string') {
     speciality = speciality.split(',').map((s: string) => s.trim());
@@ -26,9 +26,12 @@ export const POST = async (request: any) => {
 
   const newCita = new Cita({
     doctorName,
+    doctorEmail,
+    pacientName,
     userEmail,
     speciality,
     appointmentDate,
+    status: 0,
   });
 
   try {
