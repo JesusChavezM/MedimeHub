@@ -25,7 +25,7 @@ function CompletedAppointments() {
                 <div className="flex flex-col items-center justify-center w-4/5 mt-4">
                     <div className="container mx-auto">
                         <div className="text-center">
-                            <h1 className="text-4xl font-semibold text-950">Hola <span className="text-700">{session.user.name}</span>, tienes <span className="text-red-600">{citas ? citas.length : 0}</span> citas finalizadas</h1>
+                            <h1 className="text-3xl font-semibold text-950">Hola <span className="text-700">{session.user.name}</span>, tienes <span className="text-red-600">{citas ? citas.length : 0}</span> citas finalizadas</h1>
                         </div>
                         <div className="grid grid-cols-1 gap-4 p-2">
                             <table className="border-collapse w-full">
@@ -40,7 +40,7 @@ function CompletedAppointments() {
                                 <tbody>
                                     {citas ? citas.map((cita, index) => (
                                         <tr key={index} className="bg-100 hover:bg-200">
-                                            <td className="border border-800 p-2">{index + 1}</td>
+                                            <td className="border border-800 p-2 text-center">{index + 1}</td>
                                             <td className="border border-800 p-2">{cita.userEmail}</td>
                                             <td className="border border-800 p-2">{cita.pacientName}</td>
                                             <td className="border border-800 p-2">{new Date(cita.appointmentDate).toLocaleString()}</td>

@@ -11,7 +11,7 @@ function PendingAppointments() {
     const [citas, setCitas] = useState(null);
 
     useEffect(() => {
-        if (sessionStatus === "authenticated") {
+        if (sessionStatus === "authenticated" && session.user.role === "doctor") {
             fetch(`/api/pendingAppointments?email=${encodeURIComponent(session.user.email)}`)
                 .then(response => response.json())
                 .then(data => setCitas(data))
@@ -47,10 +47,6 @@ function PendingAppointments() {
         }
     };
 
-
-
-
-
     return (
         sessionStatus === "authenticated" && (
             <div className="flex items-center justify-center">
@@ -73,7 +69,7 @@ function PendingAppointments() {
                                 <tbody>
                                     {citas ? citas.map((cita, index) => (
                                         <tr key={index} className="bg-100 hover:bg-200">
-                                            <td className="border border-800 p-2">{index + 1}</td>
+                                            <td className="border border-800 p-2 text-center">{index + 1}</td>
                                             <td className="border border-800 p-2">{cita.userEmail}</td>
                                             <td className="border border-800 p-2">{cita.pacientName}</td>
                                             <td className="border border-800 p-2">{new Date(cita.appointmentDate).toLocaleString()}</td>
@@ -95,7 +91,6 @@ function PendingAppointments() {
                                                         </Image>
                                                     </button>
                                                 )}
-
                                             </td>
                                         </tr>
                                     )) : (
