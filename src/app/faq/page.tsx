@@ -8,7 +8,7 @@ export default function Faq() {
   const [openIndex, setOpenIndex] = useState(null);
 
   useEffect(() => {
-    fetch('/api/faq') // Asegúrate de reemplazar esto con la URL de tu API
+    fetch('/api/faq')
       .then(response => response.json())
       .then(data => setFaqs(data));
   }, []);
@@ -23,10 +23,10 @@ export default function Faq() {
 
   return (
     <div className='mt-28'>
-      <div className="sm:px-8 px-4">
-        <div className="mb-12 max-w-4xl">
-          <h2 className="text-2xl font-bold text-800">Preguntas frecuentes</h2>
-          <p className="text-base text-900 mt-6">Bienvenido a nuestra sección de Preguntas Frecuentes (FAQ). Aquí encontrarás respuestas a las preguntas más comunes sobre nuestros servicios, productos y políticas. Si no encuentras la respuesta que buscas, no dudes en ponerte en contacto con nuestro equipo de soporte. ¡Estamos aquí para ayudarte!</p>
+      <div className="sm:px-8 px-4 flex-grow">
+        <div className="mb-12">
+          <h2 className="text-3xl font-bold text-950 mb-4">Preguntas frecuentes</h2>
+          <p className="text-lg text-900 mt-2">Bienvenido a nuestra sección de Preguntas Frecuentes (FAQ). Aquí encontrarás respuestas a las preguntas más comunes sobre nuestros servicios, productos y políticas. Si no encuentras la respuesta que buscas, no dudes en ponerte en contacto con nuestro equipo de soporte.<span className='text-700 font-bold'> ¡Estamos aquí para ayudarte!</span></p>
         </div>
         {/* Preguntas */}
         <div className="grid lg:grid-cols-2 gap-6">

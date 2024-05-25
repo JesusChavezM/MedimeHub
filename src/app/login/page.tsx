@@ -66,12 +66,14 @@ const Login = () => {
             Iniciar Sesión
           </h1>
           <form onSubmit={handleSubmit}>
+          <span className="text-800 text-md text-center font-bold mb-8">Correo:</span>
             <input
               type="text"
               className="w-full border border-600 text-black rounded px-3 py-2 mb-4 focus:outline-none focus:border-900 focus:text-black"
               placeholder="Correo"
               required
             />
+            <span className="text-800 text-md text-center font-bold mb-8">Contraseña:</span>
             <input
               type="password"
               className="w-full border border-600 text-black rounded px-3 py-2 mb-4 focus:outline-none focus:border-900 focus:text-black"

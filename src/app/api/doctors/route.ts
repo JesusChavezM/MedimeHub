@@ -2,7 +2,7 @@ import { MongoClient, ObjectId } from 'mongodb';
 import connect from "../../../lib/mongodb";
 import { NextRequest, NextResponse } from 'next/server';
 import { parse } from 'url';
-import Doctor from '../../../models/doctors';
+
 
 
 export const dynamic = "force-dynamic";
@@ -15,56 +15,19 @@ export async function GET(request: NextRequest) {
     try {
         await client.connect();
 
-        const collection = client.db("test").collection("doctors");
+        const collection = client.db("test").collection("users");
 
-        const doctors = await collection.find({}).toArray();
+        // Buscar solo los usuarios con el rol de "doctor"
+        const doctors = await collection.find({ role: "doctor" }).toArray();
 
         return NextResponse.json(doctors);
     } catch (err) {
         console.error("Error:", err);
-        return NextResponse.json({ error: 'Error connecting to the database'});
+        return NextResponse.json({ error: 'Error connecting to the database' });
     } finally {
         await client.close();
     }
 };
-
-export const POST = async (request: any) => {
-  let { license, name, speciality, phone, clinic, hospital } = await request.json();
-  
-  // Si speciality es una cadena, la dividimos por las comas para obtener un array
-  if (typeof speciality === 'string') {
-    speciality = speciality.split(',').map((s: string) => s.trim());
-  }
-
-  await connect();
-
-  const existingDoctor = await Doctor.findOne({ license });
-
-  if (existingDoctor) {
-    return new NextResponse("El doctor ya esta registrado", { status: 400 });
-  }
-
-  const newDoctor = new Doctor({
-    license,
-    name,
-    speciality, // Ahora speciality es un array
-    phone,
-    clinic,
-    hospital,
-  });
-  try {
-    await newDoctor.save();
-    return new NextResponse("Doctor registrado", { status: 200 });
-  } catch (err: any) {
-    console.error("Error:", err);
-    return new NextResponse(err, {
-      status: 500,
-    });
-  }
-};
-
-
-
 
 export async function DELETE(request: NextRequest) {
   const url = process.env.MONGO_URI;
@@ -83,7 +46,7 @@ export async function DELETE(request: NextRequest) {
   try {
     await client.connect();
 
-    const collection = client.db("test").collection("doctors");
+    const collection = client.db("test").collection("users");
 
     const result = await collection.deleteOne({ _id: new ObjectId(id) });
 

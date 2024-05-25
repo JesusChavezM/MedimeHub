@@ -88,62 +88,72 @@ const Register = () => {
     sessionStatus !== "authenticated" && (
       <div className="flex min-h-screen flex-col items-center justify-between p-24">
         <div className="bg-100 p-8 rounded shadow-md w-96 border border-600">
-          <h1 className="text-600 text-4xl text-center font-bold mb-8">Register</h1>
-          <form onSubmit={handleSubmit}>            
+          <h1 className="text-600 text-4xl text-center font-bold mb-8">Registrate Ahora</h1>
+          <form onSubmit={handleSubmit}>      
+          <span className="text-800 text-md text-center font-bold mb-8">Correo:</span>      
             <input
               type="text"
               className="w-full border border-600 text-black rounded px-3 py-2 mb-4 focus:outline-none focus:border-900 focus:text-black"
               placeholder="Correo"
               required
             />
+            <span className="text-800 text-md text-center font-bold mb-8">Contraseña:</span>
             <input
               type="password"
               className="w-full border border-600 text-black rounded px-3 py-2 mb-4 focus:outline-none focus:border-900 focus:text-black"
               placeholder="Contraseña"
               required
             />
+            <span className="text-800 text-md text-center font-bold mb-8">Nombre:</span>
             <input
               type="text"
               className="w-full border border-600 text-black rounded px-3 py-2 mb-4 focus:outline-none focus:border-900 focus:text-black"
               placeholder="Nombre"
               required
             />
+            <span className="text-800 text-md text-center font-bold mb-8">Genero:</span>
             <input
               type="text"
               className="w-full border border-600 text-black rounded px-3 py-2 mb-4 focus:outline-none focus:border-900 focus:text-black"
               placeholder="Sexo"
               required
             />
+            <span className="text-800 text-md text-center font-bold mb-8">Fecha de nacimiento:</span>
             <input
               type="date"
               className="w-full border border-600 text-black rounded px-3 py-2 mb-4 focus:outline-none focus:border-900 focus:text-black"
               placeholder="Fecha de nacimiento"
               required
             />
+            <span className="text-800 text-md text-center font-bold mb-8">Telefono:</span>  
             <input
               type="text"
               className="w-full border border-600 text-black rounded px-3 py-2 mb-4 focus:outline-none focus:border-900 focus:text-black"
               placeholder="Telefono"
               required
             />
+            <span className="text-800 text-md text-center font-bold mb-8">Direccion:</span>            
             <input
               type="text"
               className="w-full border border-600 text-black rounded px-3 py-2 mb-4 focus:outline-none focus:border-900 focus:text-black"
               placeholder="Direccion"
               required
             />
+            <span className="text-800 text-md text-center font-bold mb-8">Estado:</span>
             <input
               type="text"
               className="w-full border border-600 text-black rounded px-3 py-2 mb-4 focus:outline-none focus:border-900 focus:text-black"
               placeholder="Estado"
               required
             />
+            <span className="text-800 text-md text-center font-bold mb-8">Pais:</span>
             <input
               type="text"
               className="w-full border border-600 text-black rounded px-3 py-2 mb-4 focus:outline-none focus:border-900 focus:text-black"
               placeholder="Pais"
               required
             />
+            <span className="text-800 text-md text-center font-bold mb-8">Codigo Postal:</span>
             <input
               type="text"
               className="w-full border border-600 text-black rounded px-3 py-2 mb-4 focus:outline-none focus:border-900 focus:text-black"
@@ -172,7 +182,8 @@ const Register = () => {
             className="block text-center hover:underline mt-2 cursor-pointer text-900 text-lg"
             href="/login"
           >
-            Login with an existing account
+            <span className="text-600 text-lg">¿Ya tienes una cuenta?</span>
+            <span className="text-900 text-lg"> Inicia sesion</span>
           </Link>
         </div>
       </div>

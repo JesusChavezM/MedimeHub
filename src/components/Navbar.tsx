@@ -68,9 +68,7 @@ const Navbar = () => {
                 FAQ
               </Link>
             </div>
-            {session &&
-            (session.user.email === "chavezmele7030@gmail.com" ||
-              session.user.email === "jesus@admin.com") ? (
+            {session && (session.user.role === "admin") ? (
               <div className="text-center text-violet-900 text-xl sm:text-2xl font-bold my-2 sm:my-0 sm:mx-10">
                 <Link
                   className="cursor-pointer hover:text-600"
