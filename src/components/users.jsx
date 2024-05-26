@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import Image from "next/image";
 import ImgUser from "../assets/img_user.svg";
-import ImgEdit from "../assets/img_edit.svg";
 import ImgDelete from "../assets/img_delete.svg";
 
 export default function UsersPage() {
@@ -85,21 +84,19 @@ export default function UsersPage() {
               <td className="border border-800 p-2 hidden md:table-cell">{user.email}</td>
               <td className="border border-800 p-2 hidden md:table-cell">{user.role}</td>
               <td className="border border-800 p-2 text-center">
-                <label>
+                <label className="inline-flex items-center cursor-pointer">
                   <input
                     type="checkbox"
                     checked={user.role === "admin"}
                     onChange={(e) => updateUserRole(user._id, e.target.checked)}
+                    className="form-checkbox h-5 w-5 text-600 transition duration-150 ease-in-out rounded-md border-gray-300 focus:ring-500 focus:border-500"
                   />
-                  Admin
+                  <span className="ml-2 text-800">Admin</span>
                 </label>
               </td>
               <td className="border border-800 p-2 space-x-2">
                 <button onClick={() => deleteUser(user._id)}>
                   <Image src={ImgDelete} height={20} width={20} alt="delete-button" />
-                </button>
-                <button onClick={() => editUser(user._id)}>
-                  <Image src={ImgEdit} height={18} width={18} alt="edit-button" />
                 </button>
               </td>
             </tr>
