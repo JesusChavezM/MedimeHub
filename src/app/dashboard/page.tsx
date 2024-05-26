@@ -1,7 +1,6 @@
 "use client";
 import { useState } from 'react';
 import Users from "../../components/users";
-import Doctors from "../../components/doctors";
 import Faqs from "../../components/faqs";
 import Locations from "../../components/Locations";
 import { useSession } from 'next-auth/react';
@@ -18,8 +17,6 @@ export default function UsersPage() {
         switch (activeComponent) {
             case 'users':
                 return <Users />;
-            case 'doctors':
-                return <Doctors />;
             case 'faqs':
                 return <Faqs />;
             case 'locations':
@@ -34,7 +31,6 @@ export default function UsersPage() {
             <div className="w-1/4 p-4 border-r-2 bg-100 text-800 border border-600 rounded-xl overflow-auto">
                 <h1 className="text-2xl font-bold text-center text-700 p-2 mb-2">Panel de administrador</h1>
                 <button onClick={() => setActiveComponent('users')} className="w-full text-xl mb-2 p-2 text-800 font-bold cursor-pointer hover:bg-400 hover:text-100 bg-200 border border-900 rounded-lg">Usuarios</button>
-                <button onClick={() => setActiveComponent('doctors')} className="w-full text-xl mb-2 p-2 text-800 font-bold cursor-pointer hover:bg-400 hover:text-100 bg-200 border border-900 rounded-lg">Doctores</button>
                 <button onClick={() => setActiveComponent('faqs')} className="w-full text-xl mb-2 p-2 text-800 font-bold cursor-pointer hover:bg-400 hover:text-100 bg-200 border border-900 rounded-lg">FAQs</button>
                 <button onClick={() => setActiveComponent('locations')} className="w-full text-xl mb-2 p-2 text-800 font-bold cursor-pointer hover:bg-400 hover:text-100 bg-200 border border-900 rounded-lg">Puntos del mapa</button>
             </div>
