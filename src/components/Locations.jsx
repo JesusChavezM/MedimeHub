@@ -7,6 +7,7 @@ import ImgDelete from "../assets/img_delete.svg";
 export default function LocationsPage() {
 
     const [locations, setLocations] = useState([]);
+    const [reload, setReload] = useState(false);
     
     useEffect(() => {
         const getLocations = async () => {
@@ -15,16 +16,14 @@ export default function LocationsPage() {
             setLocations(data);
         }
         getLocations();
-    }, []);
+    }, [reload]);
 
     const deleteLocation = async (id) => {
-        const response = await fetch(`/api/locations?id=${id}`, { method: "DELETE" });
-        const data = await response.json();
-
-        if (data.error) {
-            console.error(data.error);
-        } else {
+        try {
+            await fetch(`/api/locations?id=${id}`, { method: "DELETE" });
             setLocations(locations.filter((location) => location._id !== id));
+        } catch (error) {
+            console.error("Error deleting location:", error);
         }
     }
 
@@ -46,7 +45,7 @@ export default function LocationsPage() {
                     <table className="w-full border-collapse border border-800">
                         <thead>
                             <tr className="bg-purple-200">
-                                <th className="border border-800">ID</th>
+                                {/* <th className="border border-800">ID</th> */}
                                 <th className="border border-800 p-2">Nombre</th>
                                 <th className="border border-800 p-2">Latitud</th>
                                 <th className="border border-800 p-2">Longitud</th>
@@ -56,7 +55,7 @@ export default function LocationsPage() {
                         <tbody>
                             {locations.map((location) => (
                                 <tr key={location._id} className="bg-100">
-                                    <td className="border border-800">{location._id}</td>
+                                    {/* <td className="border border-800">{location._id}</td> */}
                                     <td className="border border-800 p-2">{location.name}</td>
                                     <td className="border border-800 p-2">{location.lat}</td> 
                                     <td className="border border-800 p-2">{location.lng}</td>                               
