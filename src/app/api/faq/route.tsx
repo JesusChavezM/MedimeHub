@@ -47,7 +47,7 @@ export const DELETE = async (request: any) => {
         return new NextResponse("Pregunta eliminada", { status: 200 });
     } catch (err: any) {
         console.error("Error:", err);
-        return new NextResponse(err, {
+        return new NextResponse("Ocurrió un error al eliminar la pregunta", {
             status: 500,
         });
     }

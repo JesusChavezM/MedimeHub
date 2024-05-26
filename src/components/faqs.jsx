@@ -6,9 +6,8 @@ import ImgDelete from "../assets/img_delete.svg";
 import ImgEdit from "../assets/img_edit.svg";
 
 export default function FaqsPage() {
-
     const [faqs, setFaqs] = useState([]);
-
+    const [reload, setReload] = useState(false); // Variable de estado para forzar la recarga del componente
 
     useEffect(() => {
         const getFaqs = async () => {
@@ -17,19 +16,18 @@ export default function FaqsPage() {
             setFaqs(data);
         }
         getFaqs();
-    }, []);
+    }, [reload]); // La dependencia reload hará que useEffect se ejecute cada vez que reload cambie
 
     const deleteFaq = async (id) => {
-        const response = await fetch(`/api/faq?id=${id}`, { method: "DELETE" });
-        const data = await response.json();
-
-        if (data.error) {
-            console.error(data.error);
-        } else {
-            setFaqs(faqs.filter((faq) => faq._id !== id));
+        try {
+            await fetch(`/api/faq?id=${id}`, { method: "DELETE" });
+    
+            // Eliminar la FAQ localmente
+            setFaqs(prevFaqs => prevFaqs.filter((faq) => faq._id !== id));
+        } catch (error) {
+            console.error("Error deleting faq:", error);
         }
     };
-
 
 
     return (
