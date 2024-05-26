@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import ImgDelete from "../assets/img_delete.svg";
+import ImgEdit from "../assets/img_edit.svg";
 
 export default function FaqsPage() {
 
@@ -48,7 +49,7 @@ export default function FaqsPage() {
                     <table className="w-full border-collapse border border-800">
                         <thead>
                             <tr className="bg-purple-200">
-                                <th className="border border-800">ID</th>
+                                {/* <th className="border border-800">ID</th> */}
                                 <th className="border border-800 p-2">Pregunta</th>
                                 <th className="border border-800 p-2">Respuesta</th>
                                 <th className="border border-800 p-2">Acciones</th>
@@ -57,20 +58,30 @@ export default function FaqsPage() {
                         <tbody>
                             {faqs.map((faq) => (
                                 <tr key={faq._id} className="bg-100">
-                                    <td className="border border-800">{faq._id}</td>
+                                    {/* <td className="border border-800">{faq._id}</td> */}
                                     <td className="border border-800 p-2">{faq.question}</td>
-                                    <td className="border border-800 p-2">{faq.answer}</td>                                
-                                    <td className="border border-800 p-2">
+                                    <td className="border border-800 p-2">{faq.answer}</td>
+                                    <td className="border border-800 p-2 mr-2">
                                         <button
-                                            className="text-500 hover:text-700"
+                                            className="text-500 hover:text-700 bg-200 rounded-lg p-1 border border-600 mr-1"
                                             onClick={() => deleteFaq(faq._id)}
                                         >
                                             <Image
                                                 src={ImgDelete}
-                                                height={20}
-                                                width={20}
+                                                height={23}
+                                                width={23}
                                                 alt="delete-button"
                                             />
+                                        </button>
+                                        <button className="text-500 hover:text-700 bg-200 rounded-lg p-1 border border-600">
+                                            <Link href={`/faqs-edit?id=${faq._id}`}>
+                                                <Image
+                                                    src={ImgEdit}
+                                                    height={23}
+                                                    width={23}
+                                                    alt="edit-button"
+                                                />
+                                            </Link>
                                         </button>
                                     </td>
                                 </tr>
