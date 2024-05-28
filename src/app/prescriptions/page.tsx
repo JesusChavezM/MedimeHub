@@ -12,7 +12,6 @@ function Page() {
     const { data: session, status: sessionStatus } = useSession();
     const [prescriptions, setPrescriptions] = useState([]);
 
-
     useEffect(() => {
         if (sessionStatus !== "authenticated") {
             router.replace("/inicio");
@@ -20,13 +19,13 @@ function Page() {
     }, [sessionStatus, router]);
 
     useEffect(() => {
-        const getPrescriptions = async () => {
-            const response = await fetch("/api/prescriptions", { cache: "no-cache" });
-            const data = await response.json();
-            setPrescriptions(data);
-        };
-        getPrescriptions();
-    }, []);
+        if (sessionStatus === "authenticated") {
+            fetch(`/api/prescriptions?email=${session?.user.email}`)
+                .then(response => response.json())
+                .then(data => setPrescriptions(data))
+                .catch(error => console.error('Error:', error));
+        }
+    }, [sessionStatus, session]);
 
     const viewPrescripcion = (id) => {
         router.push(`/prescription?id=${id}`);
@@ -35,6 +34,8 @@ function Page() {
     if (sessionStatus === "loading") {
         return <div className="flex min-h-screen flex-col items-center justify-between p-24 text-900 font-bold"><h1>Loading...</h1></div>;
     }
+
+    console.log(prescriptions);
 
     return (
         sessionStatus === "authenticated" && (
@@ -58,19 +59,17 @@ function Page() {
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    {prescriptions.map((prescriptions) => (
-                                        <a className="flex text-xl p-1 text-600 font-bold mb-4 mt-24 xl:mt-8 md:mt-8 cursor-pointer hover:bg-200 hover:text-800 bg-50 border border-900 rounded-lg" onClick={() => router.push(`/prescription?id=${prescriptions._id}`)}>
-                                            <tr key={prescriptions._id} className="bg-100">
-                                                <td className="border border-800 p-2">{prescriptions.date}</td>
-                                                <td className="border border-800 p-2">{prescriptions.doctor}</td>
-                                                <td className="border border-800 p-2">{prescriptions.specialty}</td>
-                                                <td className="border border-800 p-2">
-                                                    <button className="bg-200 border border-800 p-2 rounded-lg hover:bg-300 hover:text-800" onClick={() => viewPrescripcion(prescriptions._id)}>
-                                                        <Image src={ImgView} width={24} height={24} alt={prescriptions._id} />
-                                                    </button>
-                                                </td>
-                                            </tr>
-                                        </a>
+                                    {prescriptions.map((prescription) => (
+                                        <tr key={prescription._id} className="bg-100">
+                                            <td className="border border-800 p-2">{new Date(prescription.date).toLocaleDateString()}</td>
+                                            <td className="border border-800 p-2">{prescription.doctor.name}</td>
+                                            <td className="border border-800 p-2">{prescription.doctor.speciality.join(", ")}</td>
+                                            <td className="border border-800 p-2">
+                                                <button className="bg-200 border border-800 p-2 rounded-lg hover:bg-300 hover:text-800" onClick={() => viewPrescripcion(prescription._id)}>
+                                                    <Image src={ImgView} width={24} height={24} alt={prescription._id} />
+                                                </button>
+                                            </td>
+                                        </tr>
                                     ))}
                                 </tbody>
                             </table>

@@ -133,7 +133,7 @@ const Inicio = () => {
       <div>
         <Slider {...settings} className="w-4/5 mx-auto">
           {locations.map(location => (
-            <span key={location.id} className='bg-700 rounded-full text-white px-3 mr-2 py-1 text-xs uppercase font-medium'>{location.name}</span>
+            <span key={location._id} className='bg-700 rounded-full text-white px-3 mr-2 py-1 text-xs uppercase font-medium'>{location.name}</span>
           ))}
         </Slider>
       </div>

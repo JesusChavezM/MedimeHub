@@ -7,7 +7,6 @@ import connect from '../../../lib/mongodb';
 export const dynamic = "force-dynamic";
 
 export async function GET(request: any) {
-
     const url = process.env.MONGO_URI;
     const client = new MongoClient(url);
     const { query } = parse(request.nextUrl.href, true);
@@ -22,7 +21,7 @@ export async function GET(request: any) {
 
         const collection = client.db("test").collection("prescriptions");
 
-        const prescriptions = await collection.find({ userEmail: email }).toArray();
+        const prescriptions = await collection.find({ patientEmail: email }).toArray();
 
         return NextResponse.json(prescriptions);
     } catch (error) {
@@ -35,6 +34,7 @@ export async function GET(request: any) {
 
 export async function POST(request: any) {
     const {
+        patientEmail,
         doctorName,
         doctorLicense,
         doctorSpeciality,
@@ -58,6 +58,7 @@ export async function POST(request: any) {
     await connect();
 
     const newPrescription = new Prescription({
+        patientEmail,
         doctor: {
             name: doctorName,
             license: doctorLicense,

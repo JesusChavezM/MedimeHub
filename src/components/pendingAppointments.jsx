@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useSession } from "next-auth/react";
 import Image from "next/image";
+import Link from "next/link";
 import ImgChecked from "../assets/img_checked.svg"
 import ImgPrescription from "../assets/img_receta.svg";
 import ImgExpedient from "../assets/img_expediente.svg";
@@ -74,9 +75,11 @@ function PendingAppointments() {
                                             <td className="border border-800 p-2">{cita.pacientName}</td>
                                             <td className="border border-800 p-2">{new Date(cita.appointmentDate).toLocaleString()}</td>
                                             <td className="border border-800 p-2">
-                                                <button className="bg-200 border border-800 p-2 rounded-lg hover:bg-300 hover:text-800 mr-2" onClick={() => handleCreatePrescription(cita)}>
-                                                    <Image src={ImgPrescription} alt="Prescription" width={25} height={25}></Image>
-                                                </button>
+                                                <Link href={`/createPrescription?id=${cita._id}`} passHref>
+                                                    <button className="bg-200 border border-800 p-2 rounded-lg hover:bg-300 hover:text-800 mr-2">
+                                                        <Image src={ImgPrescription} alt="Prescription" width={25} height={25}></Image>
+                                                    </button>
+                                                </Link>
                                                 <button className="bg-200 border border-800 p-2 rounded-lg hover:bg-300 hover:text-800" onClick={() => handleAddEntry(cita)}>
                                                     <Image src={ImgExpedient} alt="Add Entry" width={25} height={25}></Image>
                                                 </button>
