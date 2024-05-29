@@ -27,10 +27,6 @@ function Page() {
         }
     }, [sessionStatus, session]);
 
-    const viewPrescripcion = (id) => {
-        router.push(`/prescription?id=${id}`);
-    };
-
     if (sessionStatus === "loading") {
         return <div className="flex min-h-screen flex-col items-center justify-between p-24 text-900 font-bold"><h1>Loading...</h1></div>;
     }
@@ -65,9 +61,11 @@ function Page() {
                                             <td className="border border-800 p-2">{prescription.doctor.name}</td>
                                             <td className="border border-800 p-2">{prescription.doctor.speciality.join(", ")}</td>
                                             <td className="border border-800 p-2">
-                                                <button className="bg-200 border border-800 p-2 rounded-lg hover:bg-300 hover:text-800" onClick={() => viewPrescripcion(prescription._id)}>
-                                                    <Image src={ImgView} width={24} height={24} alt={prescription._id} />
-                                                </button>
+                                                <Link href={`/viewPrescription?id=${encodeURIComponent(prescription._id)}`} passHref>
+                                                    <div className="bg-200 border border-800 p-2 rounded-lg hover:bg-300 hover:text-800">
+                                                        <Image src={ImgView} width={24} height={24} alt={prescription._id} />
+                                                    </div>
+                                                </Link>
                                             </td>
                                         </tr>
                                     ))}
