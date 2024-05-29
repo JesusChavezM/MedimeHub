@@ -1,19 +1,22 @@
 "use client";
 import react, { useEffect, useState } from "react";
+import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { useSession } from "next-auth/react";
 import Link from "next/link";
+import logo from "../../assets/logo-landing.svg";
+import Barcode from "../../assets/img_barCode.svg"
 
 function viewPrescription() {
     const router = useRouter();
     const { data: session, status: sessionStatus } = useSession();
     const [prescription, setPrescription] = useState(null);
 
-    useEffect(() => {
-        if (sessionStatus !== "authenticated") {
-            router.replace("/inicio");
-        }
-    }, [sessionStatus, router]);
+    // useEffect(() => {
+    //     if (sessionStatus !== "authenticated") {
+    //         router.replace("/inicio");
+    //     }
+    // }, [sessionStatus, router]);
 
     useEffect(() => {
         const urlParams = new URLSearchParams(window.location.search);
@@ -34,47 +37,81 @@ function viewPrescription() {
 
     return (
         <div className="flex items-center justify-center min-h-screen">
-            <div>
-                <Link href="/prescriptions">Regresar</Link>
-            </div>
             <div className="w-4/5 sm:mt-16 p-4 bg-white shadow-lg rounded-lg">
+                <Link href="/prescriptions" className="p-2 rounded-xl bg-300">Regresar</Link>
                 <h2>Detalles de la prescripción:</h2>
                 {prescription && (
                     <>
-                        <div>
-                            <div>
-                                <h1>Datos del paciente</h1>
-                                <p>Nombre del paciente: {prescription.patient.name}</p>
-                                <p>Edad: {prescription.patient.age}</p>
+                        <div className="bg-purple-100 rounded-lg shadow-lg p-4 border border-600 ">
+                            {/* Encabezado */}
+                            <div className="flex justify-between items-center mb-1">
+                                <div className="flex items-center">
+                                    <Image src={logo} width={100} height={100} alt="Logo" />
+                                    <span className="text-3xl font-bold ml-2 text-600">MedimeHub</span>
+                                </div>
+                                <div className="flex flex-col items-center text-center">
+                                    <Image src={Barcode} width={100} height={87.5} alt='barcode' />
+                                    <span className="font-bold">{prescription.controlledSubstance.barcode}</span>
+                                </div>
                             </div>
-                            <div>
-                                <h1>Datos del medico</h1>
-                                <p>Nombre del medico: {prescription.doctor.name}</p>
-                                <p>Cedula: {prescription.doctor.license}</p>
-                                <p>Especialidad/es: {prescription.doctor.speciality.join(", ")}</p>
-                                <p>Telefono: {prescription.doctor.phone}</p>
+                            {/* Datos del paciente y médico */}
+                            <div className="flex">
+                                {/* Datos del paciente */}
+                                <div className="w-1/2 pr-4">
+                                    <h2 className="text-lg font-semibold">Datos del paciente</h2>
+                                    <p className="flex justify-between">Nombre: <span className="font-bold">{prescription.patient.name}</span></p>
+                                    <p className="flex justify-between">Edad: <span className="font-bold">{prescription.patient.age}</span></p>
+                                    <p className="flex justify-between">Fecha: <span className="font-bold">{prescription.date}</span></p>
+                                    <p className="flex justify-between">Receta No. <span className="font-bold">{prescription.controlledSubstance.folioNumber}</span></p>
+                                </div>
+                                {/* Datos del médico */}
+                                <div className="w-1/2 pl-4">
+                                    <h2 className="text-lg font-semibold">Datos del médico</h2>
+                                    <p className="flex justify-between">Nombre: <span className="font-bold">{prescription.doctor.name}</span></p>
+                                    <p className="flex justify-between">Cédula: <span className="font-bold">{prescription.doctor.license}</span></p>
+                                    <p className="flex justify-between">Especialidad/es: <span className="font-bold">{prescription.doctor.speciality.join(", ")}</span></p>
+                                    <p className="flex justify-between">Teléfono: <span className="font-bold">{prescription.doctor.phone}</span></p>
+                                </div>
                             </div>
-                            <div>
-                                <h2>Detalles del Medicamento:</h2>
-                                <p>Nombre del medicamento: {prescription.treatment[0].medicationName}</p>
-                                <p>Dosis: {prescription.treatment[0].dosage}</p>
-                                <p>Ruta de administración: {prescription.treatment[0].routeOfAdministration}</p>
-                                <p>Frecuencia: {prescription.treatment[0].frequency}</p>
-                                <p>Duración: {prescription.treatment[0].duration}</p>
-                                <p>Instrucciones adicionales: {prescription.treatment[0].additionalInstructions}</p>
+                            {/* Sección de medicamentos */}
+                            <div className="mt-6">
+                                <h2 className="text-lg font-semibold mb-4">Medicamentos</h2>
+                                <table className="min-w-full">
+                                    <thead>
+                                        <tr className="">
+                                            <th className="px-4 font-semibold text-left">Nombre</th>
+                                            <th className="px-4 font-semibold text-left">Dosis</th>
+                                            <th className="px-4 font-semibold text-left">Ruta de administración</th>
+                                            <th className="px-4 font-semibold text-left">Frecuencia</th>
+                                            <th className="px-4 font-semibold text-left">Duración</th>
+                                            <th className="px-4 font-semibold text-left">Instrucciones adicionales</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {prescription.treatment.map((item, index) => (
+                                            <tr key={index} className="border-b">
+                                                <td className="px-4 py-2 text-left">{item.medicationName}</td>
+                                                <td className="px-4 py-2 text-left">{item.dosage}</td>
+                                                <td className="px-4 py-2 text-left">{item.routeOfAdministration}</td>
+                                                <td className="px-4 py-2 text-left">{item.frequency}</td>
+                                                <td className="px-4 py-2 text-left">{item.duration}</td>
+                                                <td className="px-4 py-2 text-left">{item.additionalInstructions}</td>
+                                            </tr>
+                                        ))}
+                                    </tbody>
+                                </table>
+                                <p>Instrucciones del médico: <span className="font-bold">{prescription.doctorInstructions}</span></p>
                             </div>
-                            <div>
-                                <h2>Detalles adicionales:</h2>
-                                <p>Instrucciones del médico: {prescription.doctorInstructions}</p>
-                                <p>Firma del Dr. Pérez: {prescription.doctorSignature}</p>
-                                <p>Número de folio: {prescription.controlledSubstance.folioNumber}</p>
-                                <p>Código de barras: {prescription.controlledSubstance.barcode}</p>
+                            {/* Detalles adicionales */}
+                            <div className="mt-8 flex flex-col items-center text-center">
+                                <span className="font-bold">{prescription.doctorSignature}</span>
+                                <p>Firma del Doctor</p>
                             </div>
                         </div>
                     </>
                 )}
             </div>
-        </div>
+        </div >
     );
 }
 
