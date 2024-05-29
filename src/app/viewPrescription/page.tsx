@@ -38,8 +38,16 @@ function viewPrescription() {
     return (
         <div className="flex items-center justify-center min-h-screen">
             <div className="w-4/5 sm:mt-16 p-4 bg-white shadow-lg rounded-lg">
-                <Link href="/prescriptions" className="p-2 rounded-xl bg-300">Regresar</Link>
-                <h2>Detalles de la prescripción:</h2>
+                <div className="flex items-center justify-center mb-4 w-full">
+                    <h1 className="text-2xl font-bold xl:mt-0 md:mt-0">
+                        Detalles de la Receta</h1>
+                    <Link
+                        className="text-xl p-1 text-600 font-bold  xl:mt-0 md:mt-0 cursor-pointer hover:bg-400 hover:text-100 bg-200 border border-900 rounded-lg fill-current ml-auto shrink-0"
+                        href="/prescriptions"
+                    >
+                        Regresar
+                    </Link>
+                </div>
                 {prescription && (
                     <>
                         <div className="bg-purple-100 rounded-lg shadow-lg p-4 border border-600 ">
