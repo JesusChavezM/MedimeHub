@@ -119,6 +119,7 @@ function CreatePrescription() {
         e.preventDefault();
 
         // Datos del médico y del paciente que no provienen del formulario
+        const doctorEmail = sessionUser?.email;
         const patientEmail = citaUser?.email;
         const doctorName = sessionUser?.name;
         const doctorLicense = sessionUser?.license;
@@ -156,6 +157,7 @@ function CreatePrescription() {
                     "Content-Type": "application/json",
                 },
                 body: JSON.stringify({
+                    doctorEmail,
                     patientEmail,
                     doctorName,
                     doctorLicense,

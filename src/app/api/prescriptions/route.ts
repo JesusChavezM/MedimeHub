@@ -38,6 +38,7 @@ export async function POST(request: any) {
     await connect();
 
     const {
+        doctorEmail,
         patientEmail,
         doctorName,
         doctorLicense,
@@ -60,6 +61,7 @@ export async function POST(request: any) {
     }
 
     const newPrescription = new Prescription({
+        doctorEmail,
         patientEmail,
         doctor: {
             name: doctorName,

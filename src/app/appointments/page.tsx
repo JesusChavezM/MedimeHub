@@ -5,6 +5,7 @@ import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import PendingAppointments from "../../components/pendingAppointments";
 import CompletedAppointments from "../../components/completedAppointments";
+import ViewPrescriptionsDoctor from "../../components/viewPrescriptionsDoctor";
 
 export default function Appointments() {
   const router = useRouter();
@@ -27,6 +28,8 @@ export default function Appointments() {
         return <PendingAppointments />;
       case 'completed':
         return <CompletedAppointments />;
+      case 'prescription':
+        return <ViewPrescriptionsDoctor />;
       default:
         return <PendingAppointments />;
     }
@@ -38,6 +41,7 @@ export default function Appointments() {
         <h1 className="text-2xl font-bold text-center text-700 p-2 mb-2">Panel de administrador</h1>
         <button onClick={() => setActiveComponent('pending')} className="w-full text-xl mb-2 p-2 text-800 font-bold cursor-pointer hover:bg-400 hover:text-100 bg-200 border border-900 rounded-lg">Citas Pendientes</button>
         <button onClick={() => setActiveComponent('completed')} className="w-full text-xl mb-2 p-2 text-800 font-bold cursor-pointer hover:bg-400 hover:text-100 bg-200 border border-900 rounded-lg">Citas Finalizadas</button>
+        <button onClick={() => setActiveComponent('prescription')} className="w-full text-xl mb-2 p-2 text-800 font-bold cursor-pointer hover:bg-400 hover:text-100 bg-200 border border-900 rounded-lg">Ver Recetas</button>
       </div>
       <div className="w-3/4 overflow-auto bg-100 border border-600 rounded-xl">
         {renderComponent()}
