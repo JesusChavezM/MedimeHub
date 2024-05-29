@@ -60,12 +60,13 @@ function Page() {
                                             <td className="border border-800 p-2">{new Date(prescription.date).toLocaleDateString()}</td>
                                             <td className="border border-800 p-2">{prescription.doctor.name}</td>
                                             <td className="border border-800 p-2">{prescription.doctor.speciality.join(", ")}</td>
-                                            <td className="border border-800 p-2">
-                                                <Link href={`/viewPrescription?id=${encodeURIComponent(prescription._id)}`} passHref>
-                                                    <div className="bg-200 border border-800 p-2 rounded-lg hover:bg-300 hover:text-800">
+                                            <td className="border border-800 p-2 mr-2">
+                                                <button className="bg-200 border border-800 p-2 rounded-lg hover:bg-300 hover:text-800">
+                                                    <Link href={`/viewPrescription?id=${encodeURIComponent(prescription._id)}`} passHref>
                                                         <Image src={ImgView} width={24} height={24} alt={prescription._id} />
-                                                    </div>
-                                                </Link>
+                                                    </Link>
+                                                </button>
+                                                
                                             </td>
                                         </tr>
                                     ))}

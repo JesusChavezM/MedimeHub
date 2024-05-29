@@ -1,20 +1,20 @@
 "use client";
-import React, {useEffect, useState} from "react";
+import React, { useEffect, useState } from "react";
 import { useSession } from "next-auth/react";
 import Image from "next/image";
 import ImgView from "../assets/img_view.svg"
 import Link from "next/link";
 
 function ViewPrescriptionsDoctor() {
-    const {data: session, status: sessionStatus} = useSession();
+    const { data: session, status: sessionStatus } = useSession();
     const [prescriptions, setPrescriptions] = useState([]);
-    
+
     useEffect(() => {
-        if(sessionStatus === "authenticated" && session.user.role === "doctor"){
-            fetch(`/api/prescriptions/view/doctor?email=${session?.user.email}`) 
-            .then((res) => res.json())
-            .then(data => setPrescriptions(data))
-            .catch(error => console.error("Error:", error));
+        if (sessionStatus === "authenticated" && session.user.role === "doctor") {
+            fetch(`/api/prescriptions/view/doctor?email=${session?.user.email}`)
+                .then((res) => res.json())
+                .then(data => setPrescriptions(data))
+                .catch(error => console.error("Error:", error));
         }
     }, [sessionStatus, session]);
 
@@ -47,11 +47,11 @@ function ViewPrescriptionsDoctor() {
                                             <td className="border border-800 p-2">{prescription.doctor.name}</td>
                                             <td className="border border-800 p-2">{prescription.doctor.speciality.join(", ")}</td>
                                             <td className="border border-800 p-2">
-                                                <Link href={`/viewPrescription?id=${encodeURIComponent(prescription._id)}`} passHref>
-                                                    <div className="bg-200 border border-800 p-2 rounded-lg hover:bg-300 hover:text-800">
+                                                <button className="bg-200 border border-800 p-2 rounded-lg hover:bg-300 hover:text-800">
+                                                    <Link href={`/viewPrescription?id=${encodeURIComponent(prescription._id)}`} passHref>
                                                         <Image src={ImgView} width={24} height={24} alt={prescription._id} />
-                                                    </div>
-                                                </Link>
+                                                    </Link>
+                                                </button>
                                             </td>
                                         </tr>
                                     ))}

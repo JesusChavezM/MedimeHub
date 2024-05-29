@@ -12,11 +12,11 @@ function viewPrescription() {
     const { data: session, status: sessionStatus } = useSession();
     const [prescription, setPrescription] = useState(null);
 
-    // useEffect(() => {
-    //     if (sessionStatus !== "authenticated") {
-    //         router.replace("/inicio");
-    //     }
-    // }, [sessionStatus, router]);
+    useEffect(() => {
+        if (sessionStatus !== "authenticated") {
+            router.replace("/inicio");
+        }
+    }, [sessionStatus, router]);
 
     useEffect(() => {
         const urlParams = new URLSearchParams(window.location.search);
@@ -32,8 +32,6 @@ function viewPrescription() {
     if (sessionStatus === "loading") {
         return <div className="flex min-h-screen flex-col items-center justify-between p-24 text-900 font-bold"><h1>Loading...</h1></div>;
     }
-
-    // console.log(prescription);
 
     return (
         <div className="flex items-center justify-center min-h-screen">
