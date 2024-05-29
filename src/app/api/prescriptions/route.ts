@@ -33,6 +33,10 @@ export async function GET(request: any) {
 }
 
 export async function POST(request: any) {
+    const requestData = await request.json();
+
+    await connect();
+
     const {
         patientEmail,
         doctorName,
@@ -43,19 +47,17 @@ export async function POST(request: any) {
         patientAge,
         patientDateOfBirth,
         patientAddress,
-        medicationName,
-        dosage,
-        routeOfAdministration,
-        frequency,
-        duration,
-        additionalInstructions,
+        treatment,
         doctorInstructions,
         doctorSignature,
         controlledSubstanceFolioNumber,
         controlledSubstanceBarcode
-    } = await request.json();
+    } = requestData;
 
-    await connect();
+    // Comprobación de campos requeridos
+    if (!patientEmail || !doctorName || !doctorLicense || !doctorSpeciality || !doctorPhone || !patientName || !patientAge || !patientDateOfBirth || !patientAddress || !treatment || !doctorInstructions || !doctorSignature || !controlledSubstanceFolioNumber || !controlledSubstanceBarcode) {
+        return new Response('Faltan campos requeridos en la solicitud', { status: 400 });
+    }
 
     const newPrescription = new Prescription({
         patientEmail,
@@ -71,14 +73,7 @@ export async function POST(request: any) {
             dateOfBirth: patientDateOfBirth,
             address: patientAddress
         },
-        treatment: {
-            medicationName,
-            dosage,
-            routeOfAdministration,
-            frequency,
-            duration,
-            additionalInstructions
-        },
+        treatment, // Aquí tratamos treatment como un arreglo
         doctorInstructions,
         doctorSignature,
         controlledSubstance: {
@@ -89,9 +84,9 @@ export async function POST(request: any) {
 
     try {
         await newPrescription.save();
-        return NextResponse.json('Receta creada exitosamente', { status: 200 });
+        return new Response('Receta creada exitosamente', { status: 200 });
     } catch (error) {
         console.error("Error: ", error);
-        return NextResponse.error();
+        return new Response('Error en el servidor', { status: 500 });
     }
 }

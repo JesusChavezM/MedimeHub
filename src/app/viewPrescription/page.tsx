@@ -69,7 +69,7 @@ function viewPrescription() {
                                     <h2 className="text-lg font-semibold">Datos del paciente</h2>
                                     <p className="flex justify-between">Nombre: <span className="font-bold">{prescription.patient.name}</span></p>
                                     <p className="flex justify-between">Edad: <span className="font-bold">{prescription.patient.age}</span></p>
-                                    <p className="flex justify-between">Fecha: <span className="font-bold">{prescription.date}</span></p>
+                                    <p className="flex justify-between">Fecha: <span className="font-bold">{new Date(prescription.date).toLocaleDateString()}</span></p>
                                     <p className="flex justify-between">Receta No. <span className="font-bold">{prescription.controlledSubstance.folioNumber}</span></p>
                                 </div>
                                 {/* Datos del médico */}
