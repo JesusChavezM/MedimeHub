@@ -1,4 +1,5 @@
 import { MongoClient, ObjectId } from 'mongodb';
+import Cita from "../../../models/citaSchema";
 import connect from "../../../lib/mongodb";
 import { NextRequest, NextResponse } from 'next/server';
 import { parse } from 'url';
@@ -7,26 +8,35 @@ import { parse } from 'url';
 
 export const dynamic = "force-dynamic";
 
-export async function GET(request: NextRequest) {
-    const url = process.env.MONGO_URI;
-    
-    const client = new MongoClient(url);
+export const GET = async (request: NextRequest) => {
+  const url = process.env.MONGO_URI;
 
-    try {
-        await client.connect();
+  const client = new MongoClient(url);
 
-        const collection = client.db("test").collection("users");
+  try {
+    await client.connect();
 
-        // Buscar solo los usuarios con el rol de "doctor"
-        const doctors = await collection.find({ role: "doctor" }).toArray();
+    const collection = client.db('test').collection('users');
 
-        return NextResponse.json(doctors);
-    } catch (err) {
-        console.error("Error:", err);
-        return NextResponse.json({ error: 'Error connecting to the database' });
-    } finally {
-        await client.close();
+    // Buscar solo los usuarios con el rol de "doctor"
+    const doctors = await collection.find({ role: 'doctor' }).toArray();
+
+    const doctorAverages = {};
+
+    for (const doctor of doctors) {
+      const citas = await Cita.find({ doctorEmail: doctor.email, rating: { $gt: 0 } });
+      const totalRatings = citas.reduce((acc, cita) => acc + cita.rating, 0);
+      const averageRating = citas.length > 0 ? totalRatings / citas.length : 0;
+      doctorAverages[doctor.email] = averageRating;
     }
+
+    return NextResponse.json({ doctors, doctorAverages });
+  } catch (err) {
+    console.error('Error:', err);
+    return NextResponse.json({ error: 'Error connecting to the database' }, { status: 500 });
+  } finally {
+    await client.close();
+  }
 };
 
 export async function DELETE(request: NextRequest) {

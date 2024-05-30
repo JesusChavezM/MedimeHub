@@ -9,10 +9,12 @@ import Imgid from "../../assets/img_id.svg";
 import ImgPhone from "../../assets/img_phone.svg";
 import ImgLocation from "../../assets/img_location.svg";
 import ImgRoom from "../../assets/img_room.svg";
+import StarAverage from "../../components/StarAverage";
 
 const Doctors = () => {
   const [doctors, setDoctors] = useState([]);
-  const [selectesDoctor, setSelectedDoctor] = useState(null);
+  const [doctorAverages, setDoctorAverages] = useState({});
+
   const router = useRouter();
   const { data: session, status: sessionStatus } = useSession();
 
@@ -26,7 +28,8 @@ const Doctors = () => {
     const getDoctors = async () => {
       const response = await fetch("/api/doctors", { cache: "no-cache" });
       const data = await response.json();
-      setDoctors(data);
+      setDoctors(data.doctors);
+      setDoctorAverages(data.doctorAverages);
     };
     getDoctors();
   }, []);
@@ -68,11 +71,25 @@ const Doctors = () => {
                           alt="doctor"
                         />
                         <div className="mt-2 ml-8 w-full">
-                          <span className="text-900 font-semibold">Nombre:</span>
-                          <div className="p-2 text-center flex  bg-white rounded-lg border border-800">
-                            <span className="text-black px-3 py-1 text-xl font-medium">
-                              {doctor.name}
-                            </span>
+                          <div>
+                            <span className="text-900 font-semibold">Nombre:</span>
+                            <div className="p-2 text-center flex  bg-white rounded-lg border border-800">
+                              <span className="text-black px-3 py-1 text-xl font-medium">
+                                {doctor.name}
+                              </span>
+                            </div>
+                          </div>
+                          <div>
+                            {doctorAverages[doctor.email] ? (
+                              <>
+                                <div className="flex mt-2">
+                                  <div className="flex justify-center items-center">
+                                    <span className="mr-2 text-800 font-semibold ">{doctorAverages[doctor.email].toFixed(1)}</span>
+                                    <StarAverage averageRating={doctorAverages[doctor.email]} />
+                                  </div>
+                                </div>
+                              </>
+                            ) : null}
                           </div>
                         </div>
                       </div>
