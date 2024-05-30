@@ -3,6 +3,7 @@ import { Schema, model, models } from 'mongoose';
 const recordSchema = new Schema({
     doctorEmail: { type: String, required: true },
     patientEmail: { type: String, required: true },
+    folio: { type: String, required: true },
     date: { type: Date, default: Date.now },
     doctor: {
         name: { type: String, required: true },

@@ -80,9 +80,11 @@ function PendingAppointments() {
                                                         <Image src={ImgPrescription} alt="Prescription" width={25} height={25}></Image>
                                                     </button>
                                                 </Link>
-                                                <button className="bg-200 border border-800 p-2 rounded-lg hover:bg-300 hover:text-800" onClick={() => handleAddEntry(cita)}>
-                                                    <Image src={ImgExpedient} alt="Add Entry" width={25} height={25}></Image>
-                                                </button>
+                                                <Link href={`/createRecord?id=${cita._id}`} passHref>
+                                                    <button className="bg-200 border border-800 p-2 rounded-lg hover:bg-300 hover:text-800">
+                                                        <Image src={ImgExpedient} alt="Add Entry" width={25} height={25}></Image>
+                                                    </button>
+                                                </Link>
                                                 {cita.status === 0 && (
                                                     <button
                                                         className="bg-200 border border-800 p-2 rounded-lg hover:bg-300 hover:text-800 ml-2"
