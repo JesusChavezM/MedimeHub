@@ -27,9 +27,12 @@ function ViewPrescriptionsDoctor() {
 
     return (
         sessionStatus === "authenticated" && (
-            <div className="flex items-center justify-center min-h-screen">
-                <div className="flex flex-col items-center justify-center mt-32 w-4/5 sm:mt-16">
+            <div className="flex items-center justify-center">
+                <div className="flex flex-col items-center justify-center w-4/5 mt-4">
                     <div className="container mx-auto">
+                        <div className="text-center">
+                            <h1 className="text-3xl font-semibold text-950">Hola <span className="text-700">{session.user.name}</span>, tienes <span className="text-red-600">{prescriptions ? prescriptions.length : 0}</span> recetas creadas.</h1>
+                        </div>
                         <div className="grid grid-cols-1 gap-4 p-2">
                             <table className="border-collapse w-full">
                                 <thead>
