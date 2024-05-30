@@ -3,6 +3,7 @@ import { useState } from 'react';
 import Users from "../../components/users";
 import Faqs from "../../components/faqs";
 import Locations from "../../components/Locations";
+import PrescriptionsAdmin from "../../components/PrescriptionsAdmin";
 import { useSession } from 'next-auth/react';
 
 export default function UsersPage() {
@@ -21,6 +22,8 @@ export default function UsersPage() {
                 return <Faqs />;
             case 'locations':
                 return <Locations />;
+            case 'prescriptions':
+                return <PrescriptionsAdmin />;
             default:
                 return <Users />;
         }
@@ -33,6 +36,7 @@ export default function UsersPage() {
                 <button onClick={() => setActiveComponent('users')} className="w-full text-xl mb-2 p-2 text-800 font-bold cursor-pointer hover:bg-400 hover:text-100 bg-200 border border-900 rounded-lg">Usuarios</button>
                 <button onClick={() => setActiveComponent('faqs')} className="w-full text-xl mb-2 p-2 text-800 font-bold cursor-pointer hover:bg-400 hover:text-100 bg-200 border border-900 rounded-lg">FAQs</button>
                 <button onClick={() => setActiveComponent('locations')} className="w-full text-xl mb-2 p-2 text-800 font-bold cursor-pointer hover:bg-400 hover:text-100 bg-200 border border-900 rounded-lg">Puntos del mapa</button>
+                <button onClick={() => setActiveComponent('prescriptions')} className="w-full text-xl mb-2 p-2 text-800 font-bold cursor-pointer hover:bg-400 hover:text-100 bg-200 border border-900 rounded-lg">Recetas</button>
             </div>
             <div className="w-3/4 overflow-auto bg-100 border border-600 rounded-xl">
                 {renderComponent()}
