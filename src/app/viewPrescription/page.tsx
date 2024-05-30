@@ -56,6 +56,14 @@ function viewPrescription() {
                             Regresar
                         </Link>
                     )}
+                    {session?.user.role === "admin" && (
+                        <Link
+                            className="text-xl p-1 text-600 font-bold  xl:mt-0 md:mt-0 cursor-pointer hover:bg-400 hover:text-100 bg-200 border border-900 rounded-lg fill-current ml-auto shrink-0"
+                            href="/dashboard"
+                        >
+                            Regresar
+                        </Link>
+                    )}
                 </div>
                 {prescription && (
                     <>

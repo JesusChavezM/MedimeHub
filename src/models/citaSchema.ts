@@ -31,6 +31,12 @@ const citaSchema = new Schema({
     required: true,
     default: 0,
   },
+  rating: {
+    type: Number,
+    min: 0,
+    max: 5,
+    default: 0,
+  },
 });
 
 const Cita = models.Cita || model('Cita', citaSchema);
