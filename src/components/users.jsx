@@ -95,7 +95,7 @@ export default function UsersPage() {
                 </label>
               </td>
               <td className="border border-800 p-2 space-x-2">
-                <button onClick={() => deleteUser(user._id)}>
+                <button className="text-500 hover:text-700 bg-200 rounded-lg p-1 border border-600" onClick={() => deleteUser(user._id)}>
                   <Image src={ImgDelete} height={20} width={20} alt="delete-button" />
                 </button>
               </td>

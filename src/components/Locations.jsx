@@ -61,7 +61,7 @@ export default function LocationsPage() {
                                     <td className="border border-800 p-2">{location.lng}</td>                               
                                     <td className="border border-800 p-2">
                                         <button
-                                            className="text-500 hover:text-700"
+                                            className="text-500 hover:text-700 bg-200 rounded-lg p-1 border border-600"
                                             onClick={() => deleteLocation(location._id)}
                                         >
                                             <Image

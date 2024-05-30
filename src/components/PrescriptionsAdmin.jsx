@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import Image from "next/image";
-import ImgUser from "../assets/img_user.svg";
+import Link from "next/link";
+import ImgView from "../assets/img_view.svg";
 import ImgDelete from "../assets/img_delete.svg";
 import { useRouter } from "next/navigation";
 import { useSession } from "next-auth/react";
@@ -47,7 +48,9 @@ export default function UsersPage() {
                             <thead>
                                 <tr className="bg-purple-200">
                                     <th className="border border-800">Doctor</th>
+                                    <th className="border border-800" >Doctor email</th>
                                     <th className="border border-800 p-2">Paciente</th>
+                                    <th className="border border-800 p-2">Paciente email</th>
                                     <th className="border border-800 p-2">Fecha</th>
                                     <th className="border border-800 p-2">Acciones</th>
                                 </tr>
@@ -56,11 +59,18 @@ export default function UsersPage() {
                                 {prescriptions.map((prescription) => (
                                     <tr key={prescription._id} className="bg-100">
                                         <td className="border border-800 p-2">{prescription?.doctor?.name}</td>
+                                        <td className="border border-800 p-2 hidden md:table-cell">{prescription?.doctorEmail}</td>
                                         <td className="border border-800 p-2 hidden md:table-cell">{prescription?.patient?.name}</td>
+                                        <td className="border border-800 p-2 hidden md:table-cell">{prescription?.patientEmail}</td>
                                         <td className="border border-800 p-2 hidden md:table-cell">{new Date(prescription?.date).toLocaleDateString()}</td>
                                         <td className="border border-800 p-2 space-x-2">
                                             <button className="text-500 hover:text-700 bg-200 rounded-lg p-1 border border-600" onClick={() => deletePrescription(prescription._id)}>
                                                 <Image src={ImgDelete} height={20} width={20} alt="delete-button" />
+                                            </button>
+                                            <button className="text-500 hover:text-700 bg-200 rounded-lg p-1 border border-600">
+                                                <Link href={`/viewPrescription?id=${encodeURIComponent(prescription._id)}`} passHref>
+                                                    <Image src={ImgView} height={20} width={20} alt="user-button" />
+                                                </Link>
                                             </button>
                                         </td>
                                     </tr>
