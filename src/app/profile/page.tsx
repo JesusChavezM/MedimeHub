@@ -115,7 +115,7 @@ const Profile = () => {
                                     <Image src={ImgEdit} alt="Edit Profile" width={30} height={30} />
                                     Editar Perfil
                                 </button>
-                                {session.user.role === 'doctor' && (
+                           {/*     {session.user.role === 'doctor' && (
                                     <div className='flex flex-col justify-center items-center'>
                                         <button className="w-full justify-center border border-600 bg-white text-black p-2 rounded-2xl hover:bg-200 flex items-center space-x-6" onClick={() => router.push(`/edit-profile?email=${session.user.email}`)}>
                                             <Image src="/static/media/logoqery.png" alt="Edit Profile" width={40} height={40} className='rounded-lg' />
@@ -123,7 +123,7 @@ const Profile = () => {
                                         </button>
                                         <a href='https://qery.me/mas'>¿Qué es Query?</a>
                                     </div>
-                                )}
+                                )} */}
                             </div>
                         </div>
                         {/* Sección de las citas del usuario */}
